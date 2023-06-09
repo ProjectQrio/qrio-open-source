@@ -6,33 +6,23 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+  .header {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr 1fr; /* This creates three columns of different widths */
+    grid-template-rows: auto; /* This creates one row, but you can add more if needed */
+    padding: 40px; /* Adds some padding around the header */
+    margin-top: 50px; 
 
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
+  }
+  
+  .logo {
+    grid-column: 1; /* Places the logo in the first column */
+    align-self: center; /* Centers the logo vertically in its grid cell */
+    justify-self: center; /* Aligns the logo to the left of its grid cell */
+    padding-left: 20px; /* Adds some padding to the left of the logo */
+  }
+  
 
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;

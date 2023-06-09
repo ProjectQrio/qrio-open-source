@@ -1,9 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import Link from "next/link";
+import Header from "../components/Header.js";
 
-const inter = Inter({ subsets: ['latin'] })
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -14,39 +17,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-          Collaborate in Crowdsourced Truth Finding
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/qrioheaderlogo.png"
-                alt="Qrio Logo"
-                className={styles.vercelLogo}
-                width={130}
-                height={35}
-                priority
-              />
-            </a>
-          </div>
-        </div>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/ProjectQrioHeaderImage.png"
-            alt="Qrio Header Image"
-            width={1500}
-            height={200}
-            priority
-          />
-        </div>
+      <Header></Header>
+
+      <main className={`${styles.main} ${inter.className}`}>
+        
+
+        <div className={styles.header}></div>
 
         <center>
           <h1>Collaborate in Crowdsourced Truth Finding</h1>
@@ -59,7 +36,10 @@ export default function Home() {
             gather the best information to address your most pressing questions
             about current events and more.
           </p>
-          <button>Click Here</button>
+
+          <Link href="/ClaimProductPage">
+            <button className={styles.button}>Click Here</button>
+          </Link>
         </center>
         <center>
           <h2>Have Your Solution Tested</h2>
@@ -69,10 +49,12 @@ export default function Home() {
             time. Use collective intelligence to get a solution idea tested
             before implementing it.
           </p>
-          <button>Click Here</button>
-        </center>
 
+          <Link href="/SolutionProductPage">
+            <button className={styles.button}>Click Here</button>
+          </Link>
+        </center>
       </main>
     </>
-  )
+  );
 }
