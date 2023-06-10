@@ -31,24 +31,51 @@
     flex-grow: 1;
   }
 
+
   .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* This creates two equal columns */
-    gap: 30px; /* Optional: This adds some space between the columns */
-    margin: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    margin: 0px 40px;
+    padding: 60px 250px; /* Add 20px of horizontal padding */
   }
   
-  .column {
-    align-items: center; /* Centers the child elements vertically */
-  }
+ .grid-item img {
+  width: 100%;
+  height: auto;
+}
 
 
 
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  margin: 0 auto; /* Margin auto on the left and right will center the grid */
+  padding: 0px; /* Remove horizontal padding to not affect the centering */
+  border: 2px solid black;
+  width: 70%; /* You might want to restrict the width of the grid */
+  gap: 1px; /* This creates space between cells */
+  background-color: black; /* This will show through the gaps */
+}
 
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+.evidence-header {
+  text-align: center;
+  background-color: white; /* This will cover the grid's background color */
+  padding: 20px
+
+}
+
+.evidence-content {
+  text-align: left;
+  padding: 20px;
+  background-color: white; /* This will cover the grid's background color */
+  padding: 15px
+}
+
+
+
 }
 
 * {

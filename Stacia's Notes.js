@@ -1,3 +1,10 @@
+///Cut from global.css - it was a remnant of the code it started with
+
+--callout-rgb: 238, 240, 241;
+--callout-border-rgb: 172, 175, 176;
+--card-rgb: 180, 185, 188;
+--card-border-rgb: 131, 134, 135;
+
 ////Full code from cut "HomePageColumns" component
 
 import Link from "next/link";
