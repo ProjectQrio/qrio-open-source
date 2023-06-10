@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: top;
   align-items: center;
   min-height: 100vh;
 }
@@ -32,6 +32,7 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container, 
                               this may cause the image to be cropped */
+  margin-bottom: 110px
 }
 
 

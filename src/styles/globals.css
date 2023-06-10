@@ -31,6 +31,20 @@
     flex-grow: 1;
   }
 
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* This creates two equal columns */
+    gap: 30px; /* Optional: This adds some space between the columns */
+    margin: 50px;
+  }
+  
+  .column {
+    align-items: center; /* Centers the child elements vertically */
+  }
+
+
+  
+
 
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
