@@ -11,8 +11,8 @@
 
   .links-container {
     display: flex;
-    justify-content: flex-end; /* Pushes the child elements to the right */
-    flex-shrink: 1; /* Allows the child elements to grow to fill the remaining space */
+    justify-content: flex-end;
+    flex-shrink: 1;
   }
   
   .links-container a {
