@@ -9,10 +9,22 @@ export default function EvidenceGrid() {
        <h2>Against</h2>
       </div>
       <div className="evidence-content">
-       <p>ajf;sdfija;fjaojgojaofi</p>
+       <p className="evidence-text">ajf;sdfija;fjaojgojaofi</p>
       </div>
       <div className="evidence-content">
-       <p>ajf;sdfija;fjaojgojaofi</p>
+       <p className="evidence-text">ajf;sdfija;fjaojgojaofi</p>
+      </div>
+      <div className="evidence-content">
+       <p className="evidence-text">ajf;sdfija;fjaojgojaofi</p>
+      </div>
+      <div className="evidence-content">
+       <p className="evidence-text">ajf;sdfija;fjaojgojaofi</p>
+      </div>
+      <div className="evidence-content">
+       <p className="evidence-text">ajf;sdfija;fjaojgojaofi</p>
+      </div>
+      <div className="evidence-content">
+       <p className="evidence-text">ajf;sdfija;fjaojgojaofi</p>
       </div>
 
     

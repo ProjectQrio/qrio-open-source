@@ -10,6 +10,9 @@ function ClaimInvestigationPage() {
       <br />
       <center>
         <h1>Claim Title</h1>
+        <br /> <br />
+        <p className="claimdescriptionp">Claim Description Paragraph</p>
+      <br />
       </center>
       <br />
       <br />

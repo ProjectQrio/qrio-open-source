@@ -16,9 +16,9 @@
   }
   
   .links-container a {
-    margin-left: 20px;
+    margin-left: 60px;
   }
-
+  
   .header a {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -83,9 +83,9 @@
 .contact-form-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
+  margin-top: 80px
 }
 
 .contact-form {
@@ -145,9 +145,63 @@
 }
 
 
+.register-form {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.register-form input[type='text']
+.register-form input [type='email']
+.register-form input [type='password'] {
+  width: 100%; /* Make input and textarea elements stretch to fill the container */
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.register-form textarea {
+  height: 100px;
+}
+
+.register-form button[type='submit'] {
+  height: 40px;
+  color: white;
+  background-color: #787FFA;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-form button[type='submit']:hover {
+  background-color: #252CFC;
+}
 
 
+.claimdescriptionp {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  align-items: center;
+  margin-left: 350px;
+  margin-right: 350px;
+}
 
+.evidence-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+}
 
 
 
