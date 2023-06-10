@@ -1,21 +1,25 @@
 :root {
- 
-
   .header {
     display: flex;
-    align-items: center; /* Centers the child elements vertically */
     padding: 10px;
-    margin: 50px 86px 15px 0px;
+    margin: 50px 100px 15px;
   }
   
   .logo-container {
-    margin-right: 50px; /* Adds some spacing between the logo and the links */
-    padding-left: 30px;
+    flex-grow: 1;
+  }
+
+  .links-container {
+    display: flex;
+    justify-content: flex-end; /* Pushes the child elements to the right */
+    flex-shrink: 1; /* Allows the child elements to grow to fill the remaining space */
   }
   
+  .links-container a {
+    margin-left: 20px;
+  }
+
   .header a {
-    margin: 0 0px; /* Adds some horizontal spacing between the links */
-    padding-left: 266px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 600;
