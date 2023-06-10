@@ -1,3 +1,52 @@
+////Full code from cut "HomePageColumns" component
+
+import Link from "next/link";
+import styles from "@/styles/Home.module.css";
+
+
+export default function HomePageColumns() {
+  return (
+    
+<div className="grid-container">
+  <div className="column">
+  <center>
+<h2>Have Your Claim Investigated</h2><br />
+<p>
+  There’s too much bad information to sort through and it’s easy to
+  get caught in information bubbles. Use collective intelligence to
+  gather the best information to address your most pressing questions
+  about current events and more.
+</p>
+<br />
+<Link href="/ClaimProductPage">
+  <button className={styles.button}>Click Here</button>
+</Link>
+</center>
+
+  </div>
+  <div className="column">
+  <center>
+<h2>Have Your Solution Tested</h2><br />
+<p>
+  So many attempted solutions end up creating new, and sometimes
+  worse, problems because we didn’t think them through enough ahead of
+  time. Use collective intelligence to get a solution idea tested
+  before implementing it.
+</p>
+<br />
+<Link href="/SolutionProductPage">
+  <button className={styles.button}>Click Here</button>
+</Link>
+</center>
+  </div>
+</div>
+
+
+  );
+}
+
+
+
 ////Original logo and text Cut from index.js
 
 <div className={styles.description}>
@@ -17,9 +66,6 @@
 
 
 ////Cut CSS from original global.css
-
-
-
 
 
 --background-start-rgb: 214, 219, 220;

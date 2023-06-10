@@ -26,16 +26,24 @@
 
 .header {
   width: 100%; /* Full width */
-  height: 300px; /* Set the height as you prefer */
+  height: 250px; /* Set the height as you prefer */
   background-image: url('/ProjectQrioHeaderImage.png'); /* Replace with your image path */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container, 
                               this may cause the image to be cropped */
-  margin-bottom: 110px
+  margin-bottom: 80px
 }
 
-
+.underheaderDescriptionp {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  align-items: center;
+  margin-left: 350px;
+  margin-right: 350px;
+}
 
 
 

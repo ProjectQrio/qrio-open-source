@@ -4,8 +4,6 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Header from "../components/Header.js";
-import HomePageColumns from "../components/HomePageColumns.js";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,20 +19,19 @@ export default function Home() {
 
       <Header></Header>
 
-      <main className={`${styles.main} ${inter.className}`}>
-        
+      <div className={styles.header}></div>
 
-        <div className={styles.header}></div>
-
-        <center>
-          <h1>Collaborate in Crowdsourced Truth Finding</h1>
-        </center>
-
-<HomePageColumns></HomePageColumns>
-
-
-    
-      </main>
+      <center>
+        <h1>Collaborate in Crowdsourced Truth Finding</h1><br /> <br />
+        <p className={styles.underheaderDescriptionp}>
+  There’s too much bad information to sort through and it’s easy to
+  get caught in information bubbles. Join with a community of curious truth-seekers to
+  gather the best information to address your most pressing questions
+  about current events and more.
+<br /> <br />
+  Be Qrios. Question Everything.
+        </p>
+      </center>
     </>
   );
 }

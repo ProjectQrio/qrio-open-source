@@ -4,7 +4,7 @@
   .header {
     display: flex;
     align-items: center; /* Centers the child elements vertically */
-    padding: 25px;
+    padding: 10px;
     margin: 50px 86px 15px 0px;
   }
   
@@ -14,8 +14,8 @@
   }
   
   .header a {
-    margin: 0 8px; /* Adds some horizontal spacing between the links */
-    padding-left: 150px;
+    margin: 0 0px; /* Adds some horizontal spacing between the links */
+    padding-left: 266px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 600;
@@ -43,7 +43,6 @@
   }
 
 
-  
 
 
   --callout-rgb: 238, 240, 241;
