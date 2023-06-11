@@ -17,7 +17,7 @@ export default function Header() {
 
             <div className="links-container">
                 <Link href="/">Home</Link>
-                <Link href="/">Log In</Link>
+                <Link href="/LoginPage">Log In</Link>
                 <Link href="/RegisterPage">Register</Link>
             </div>
         </header>
