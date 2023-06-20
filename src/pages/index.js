@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-import Header from "../components/Header.js";
+import MainNavigation from "../components/MainNavigation.js";
 import HomePageClaimsGrid from "../components/HomePageClaimsGrid.js";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/Qriofavicon.png" />
       </Head>
 
-      <Header></Header>
+      <MainNavigation></MainNavigation>
 
       <div className={styles.header}></div>
 

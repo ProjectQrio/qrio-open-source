@@ -1,39 +1,5 @@
 :root {
-  .header {
-    display: flex;
-    padding: 10px;
-    margin: 50px 100px 15px;
-  }
   
-  .logo-container {
-    flex-grow: 1;
-  }
-
-  .links-container {
-    display: flex;
-    justify-content: flex-end;
-    flex-shrink: 1;
-  }
-  
-  .links-container a {
-    margin-left: 60px;
-  }
-  
-  .header a {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-    transition: color 0.3s ease;
-  }
-  
-  .header a:hover {
-    color: #252CFC;
-  }
-  
-  .logo-container{
-    flex-grow: 1;
-  }
 
 
   .grid-container {

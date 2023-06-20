@@ -1,11 +1,11 @@
-import Header from "../components/Header.js";
+import MainNavigation from "../components/MainNavigation.js";
 import EvidenceGrid from "../components/EvidenceGrid.js";
 import EvidenceForm from "../components/EvidenceForm.js";
 
 function ClaimInvestigationPage() {
   return (
     <div>
-      <Header></Header>
+      <MainNavigation></MainNavigation>
       <br />
       <br />
       <center>
