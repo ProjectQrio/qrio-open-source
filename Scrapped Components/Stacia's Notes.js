@@ -1,3 +1,44 @@
+
+////Scrapped User Profile with Authentication (because it would briefly flash the profile or loading before redirecting)
+
+
+import { useEffect, useState } from "react";
+import { getSession } from "next-auth/react";
+
+function UserProfile() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (!session) {
+        window.location.href = "/login";
+      } else {
+        setIsLoading(false);
+      }
+    });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <center>
+        <p>Loading...</p>
+      </center>
+    );
+  }
+
+  return (
+    <div>
+      <center>
+        <h1>My profile</h1>
+      </center>
+    </div>
+  );
+}
+
+export default UserProfile;
+
+
+
 ///attempt at the [...nextauth].js page using the Next Auth credentials documentation https://next-auth.js.org/configuration/providers/credentials
 
 import CredentialsProvider from "next-auth/providers/credentials"
