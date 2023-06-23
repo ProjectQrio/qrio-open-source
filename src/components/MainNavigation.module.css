@@ -1,0 +1,59 @@
+
+
+.header {
+    display: flex;
+    padding: 10px;
+    margin: 50px 100px 15px;
+  }
+  
+
+  .linkscontainer {
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 1;
+  }
+  
+  .linkscontainer a {
+    margin-left: 60px;
+  }
+  
+  .header a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    transition: transform 0.3s, color 0.3s ease;
+  }
+  
+  .header a:hover {
+    color: #252CFC;
+    transform: scale(1.1);
+  }
+  
+  .logo {
+    flex-grow: 1;
+  }
+
+
+  .logoutbutton:hover {
+    color: #252CFC;
+    flex-grow: 1;
+    transform: scale(1.1);
+  }
+
+
+.logoutbutton {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    padding: 0px 0px;
+    margin-left: 60px;
+    background-color: #bce52900;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border-width: 0px;
+    border-radius: 0px;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
