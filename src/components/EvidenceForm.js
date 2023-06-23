@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 function EvidenceForm() {
   const [sourceLink, setSourceLink] = useState('');
   const [position, setPosition] = useState('');
@@ -20,7 +21,7 @@ function EvidenceForm() {
     }
 
     // Check if summary has at least 100 characters
-    if (summary.length < 100) {
+    if (summary.length < 50) {
       setErrorMessage('Summary must be at least 100 characters long.'); // Set error message
       return; // Stop form submission
     }
