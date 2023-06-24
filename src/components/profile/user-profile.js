@@ -9,7 +9,8 @@ async function changePasswordHandler(passwordData) {
     body: JSON.stringify(passwordData),
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    credentials: 'include',
   });
   const data = await response.json();
 
