@@ -1,0 +1,14 @@
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    margin: 0px 40px;
+    padding: 60px 250px; /* Add 20px of horizontal padding */
+  }
+  
+ .gridItem img {
+  width: 100%;
+  height: auto;
+}

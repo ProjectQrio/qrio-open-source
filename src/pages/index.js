@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import MainNavigation from "../components/MainNavigation.js";
-import HomePageClaimsGrid from "../components/HomePageClaimsGrid.js";
+import HomePageClaimsGrid from "../components/home-page/HomePageClaimsGrid.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
