@@ -19,19 +19,15 @@
 
 }
 
-.evidenceContent {
+.evidenceBox {
     background-color: white;
-    color: black;
+    color: #bde529;
     border: 1px solid #bde529;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
     padding: 1em; 
     border-radius: 5px; 
   }
   
-
-
-
-
 
 .claimdescriptionp {
   font-family: 'Roboto', sans-serif;

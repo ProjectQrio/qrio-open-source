@@ -20,9 +20,8 @@ function EvidenceForm() {
       return; // Stop form submission
     }
 
-    // Check if summary has at least 100 characters
     if (summary.length < 50) {
-      setErrorMessage('Summary must be at least 100 characters long.'); // Set error message
+      setErrorMessage('Summary must be at least 50 characters long.'); // Set error message
       return; // Stop form submission
     }
 

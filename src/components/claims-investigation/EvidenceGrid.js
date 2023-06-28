@@ -9,22 +9,22 @@ export default function EvidenceGrid() {
       <div className={classes.evidenceHeader}>
        <h2>Against</h2>
       </div>
-      <div className={classes.evidenceContent}>
+      <div className={classes.evidenceBox}>
        <p className={classes.evidenceText}>ajf;sdfija;fjaojgojaofi</p>
       </div>
-      <div className={classes.evidenceContent}>
+      <div className={classes.evidenceBox}>
        <p className={classes.evidenceText}>ajf;sdfija;fjaojgojaofi</p>
       </div>
-      <div className={classes.evidenceContent}>
+      <div className={classes.evidenceBox}>
        <p className={classes.evidenceText}>ajf;sdfija;fjaojgojaofi</p>
       </div>
-      <div className={classes.evidenceContent}>
+      <div className={classes.evidenceBox}>
        <p className={classes.evidenceText}>ajf;sdfija;fjaojgojaofi</p>
       </div>
-      <div className={classes.evidenceContent}>
+      <div className={classes.evidenceBox}>
        <p className={classes.evidenceText}>ajf;sdfija;fjaojgojaofi</p>
       </div>
-      <div className={classes.evidenceContent}>
+      <div className={classes.evidenceBox}>
        <p className={classes.evidenceText}>ajf;sdfija;fjaojgojaofi</p>
       </div>
 
