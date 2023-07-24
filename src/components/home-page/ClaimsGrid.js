@@ -11,10 +11,10 @@ function ClaimsGrid({ claims }) {
     <div>
       {claims.map((claim) => (
         <div key={claim.id}>
-          <Link href={`/claims/${claim.id}`}>
+          <Link href={`/claims-investigation/${claim.id}`}>
             <img src={claim.image} alt={claim.title} />
           </Link>
-          <Link href={`/claims/${claim.id}`}>
+          <Link href={`/claims-investigation/${claim.id}`}>
             {claim.title}
           </Link>
         </div>

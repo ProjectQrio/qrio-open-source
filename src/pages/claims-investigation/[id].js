@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 // This function gets called at build time
 export async function getStaticProps(context) {
@@ -9,7 +9,8 @@ export async function getStaticProps(context) {
 
   const claimsCollection = db.collection('claims');
 
-  const claim = await claimsCollection.findOne({ id: params.id });
+  // Modify this line to use the _id field
+  const claim = await claimsCollection.findOne({ _id: new ObjectId(params.id) });
 
   client.close();
 
@@ -27,13 +28,13 @@ export async function getStaticPaths() {
 
   const claimsCollection = db.collection('claims');
 
-  const claims = await claimsCollection.find({}, { id: 1 }).toArray();
+  const claims = await claimsCollection.find({}, { _id: 1 }).toArray();
 
   client.close();
 
   return {
-    paths: claims.map((claim) => ({ params: { id: claim.id.toString() } })),
-    fallback: false, // See the documentation for a discussion of fallback
+    paths: claims.map((claim) => ({ params: { id: claim._id.toString() } })),
+    fallback: 'blocking', // See the documentation for a discussion of fallback
   };
 }
 
@@ -46,5 +47,4 @@ export default function ClaimPage({ claim }) {
         <p>{claim.description}</p>
       </div>
     );
-  }
-  
+}
