@@ -1,7 +1,7 @@
 import MainNavigation from "../components/MainNavigation.js";
-import EvidenceGrid from "../components/claims-investigation/EvidenceGrid.js";
-import EvidenceForm from "../components/claims-investigation/EvidenceForm.js";
-import ClaimContent from "@/components/claims-investigation/ClaimContent.js";
+import EvidenceGrid from "./claims-investigation/EvidenceGrid.js";
+import EvidenceForm from "./claims-investigation/EvidenceForm.js";
+import ClaimContent from "@/pages/claims-investigation/ClaimContent.js";
 
 function ClaimInvestigationPage() {
   return (

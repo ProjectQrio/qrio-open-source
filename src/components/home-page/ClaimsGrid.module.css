@@ -1,14 +1,32 @@
+.claimsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* adjust this value as per your requirements */
+}
 
-.gridContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
-    margin: 0px 40px;
-    padding: 60px 250px; /* Add 20px of horizontal padding */
-  }
-  
- .gridItem img {
+.claimItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.claimImage {
   width: 100%;
-  height: auto;
+  height: 300px;
+  object-fit: cover;
+}
+
+.claimItem:hover .claimImage {
+  transform: scale(1.03);
+  opacity: 0.8;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.claimTitle {
+  text-align: center;
+  margin-top: 10px; /* adjust this value as per your requirements */
+}
+
+.claimItem:hover .claimTitle {
+  color: #232327;
 }
