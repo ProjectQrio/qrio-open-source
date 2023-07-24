@@ -1,4 +1,8 @@
 import { MongoClient, ObjectId } from 'mongodb';
+import MainNavigation from '../../components/MainNavigation';
+import EvidenceGrid from './EvidenceGrid';
+import EvidenceForm from './EvidenceForm';
+import classes from './claimpage.module.css'
 
 // This function gets called at build time
 export async function getStaticProps(context) {
@@ -39,12 +43,15 @@ export async function getStaticPaths() {
 }
 
 export default function ClaimPage({ claim }) {
-    // Render your page with the data
-    return (
-      <div>
-        <h1>{claim.title}</h1>
-        <img src={claim.image} alt={claim.title} />
-        <p>{claim.description}</p>
-      </div>
-    );
+  // Render your page with the data
+  return (
+    <div>
+      <MainNavigation></MainNavigation>
+      <img className={classes.claimImage} src={claim.image} alt={claim.title} />
+      <h1 className={classes.claimtitle}>{claim.title}</h1>
+      <p className={classes.claimdescriptionp}>{claim.description}</p>
+      <EvidenceGrid></EvidenceGrid>
+    <EvidenceForm></EvidenceForm>
+    </div>
+  );
 }
