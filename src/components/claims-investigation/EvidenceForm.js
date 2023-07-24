@@ -1,3 +1,4 @@
+import classes from './evidence-form.module.css'
 import { useState } from 'react';
 
 function EvidenceForm() {
@@ -19,9 +20,8 @@ function EvidenceForm() {
       return; // Stop form submission
     }
 
-    // Check if summary has at least 100 characters
-    if (summary.length < 100) {
-      setErrorMessage('Summary must be at least 100 characters long.'); // Set error message
+    if (summary.length < 50) {
+      setErrorMessage('Summary must be at least 50 characters long.'); // Set error message
       return; // Stop form submission
     }
 
@@ -41,9 +41,9 @@ function EvidenceForm() {
   };
 
   return (
-    <div className="contact-form-container">
-      <form className="contact-form" onSubmit={handleSubmit}>
-      <h2 className="form-title">Submit Evidence</h2> 
+    <div className={classes.contactFormContainer}>
+      <form className={classes.contactForm} onSubmit={handleSubmit}>
+      <h2 className={classes.formTitle}>Submit Evidence</h2> 
         <label>
           Source Link:
           <input type="url" value={sourceLink} onChange={e => setSourceLink(e.target.value)} required />
@@ -70,9 +70,9 @@ function EvidenceForm() {
       </form>
 
       {/* Display error message */}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className={classes.errorMessage}>{errorMessage}</p>}
 
-      {isSubmitted && <p className="success-message">Form successfully submitted!</p>}
+      {isSubmitted && <p className={classes.successMessage}>Form successfully submitted!</p>}
     </div>
   );
 }

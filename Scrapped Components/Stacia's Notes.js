@@ -1,4 +1,25 @@
 
+///Scrapped ClaimContent using props rather than map
+
+function ClaimContent(props) {
+  return(
+
+<div>
+<div>
+    <img src={props.image} alt={props.title} />
+</div>
+  <div>
+
+      <h1 className={classes.claimtitle}>{props.claimtitle}</h1>
+
+      <p className={classes.claimdescriptionp}>{props.claimdescription}</p>
+  </div>
+  </div>
+)};
+
+export default ClaimContent;
+
+
 ////Scrapped User Profile with Authentication (because it would briefly flash the profile or loading before redirecting)
 
 

@@ -1,0 +1,55 @@
+
+
+.evidenceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  margin: 0 auto; /* Margin auto on the left and right will center the grid */
+  padding: 0px; /* Remove horizontal padding to not affect the centering */
+  border: 2px solid black;
+  width: 70%; /* You might want to restrict the width of the grid */
+  gap: 1px; /* This creates space between cells */
+  background-color: black; /* This will show through the gaps */
+}
+
+.evidenceHeader {
+  text-align: center;
+  background-color: white; /* This will cover the grid's background color */
+  padding: 20px
+
+}
+
+.evidenceBox {
+    background-color: white;
+    color: #bde529;
+    border: 1px solid #bde529;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 1em; 
+    border-radius: 5px; 
+  }
+  
+
+.claimdescriptionp {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  align-items: center;
+  margin-left: 350px;
+  margin-right: 350px;
+}
+
+.claimtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    color: black;
+    align-items: center;
+  }
+
+.evidenceText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+}
