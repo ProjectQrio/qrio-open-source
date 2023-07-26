@@ -7,6 +7,7 @@ export default NextAuth({
   getSession: {
     strategy: "jwt",
   },
+  
   providers: [
     CredentialsProvider({
       async authorize(credentials) {

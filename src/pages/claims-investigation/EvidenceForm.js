@@ -1,5 +1,7 @@
 import classes from './evidence-form.module.css'
 import { useState } from 'react';
+import { useSession } from 'next-auth/react'
+
 
 function EvidenceForm() {
   const [sourceLink, setSourceLink] = useState('');
@@ -7,11 +9,27 @@ function EvidenceForm() {
   const [summary, setSummary] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  
-  // Let's assume the user is stored in a state or prop
-  const [user, setUser] = useState('John Doe'); 
+  const { data: session, status } = useSession()
+  const loading = status === 'loading';
+  const loggedIn = status === 'authenticated';
 
-  const handleSubmit = (e) => {
+
+  // If session is loading, return a loading message
+if (loading) {
+  return <p>Loading...</p>;
+}
+
+// If there is no session (user is not logged in)
+if (!loggedIn) {
+  return <p>Please create an account or log in to submit evidence.</p>;
+}
+
+
+  // Rest of your form code...
+
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check if all fields are filled
@@ -25,8 +43,21 @@ function EvidenceForm() {
       return; // Stop form submission
     }
 
-    // Here you would typically send the form data to your server
-    console.log({ sourceLink, position, summary, user });
+    const user = session?.user?.name;  // <---- Add this line here
+    
+    const response = await fetch('/api/evidence', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ sourceLink, position, summary, user:session.user.name }), // You can add any attribute from the user object available in the session
+    });
+
+    if (!response.ok) {
+      const responseData = await response.json();
+      setErrorMessage(responseData.message || 'Something went wrong!'); // Set error message
+      return;
+    }
 
     setSourceLink('');
     setPosition('');
@@ -62,9 +93,6 @@ function EvidenceForm() {
           Summary:
           <textarea value={summary} onChange={e => setSummary(e.target.value)} required />
         </label>
-
-        {/* Hidden input that tracks which user submitted the form */}
-        <input type="hidden" value={user} />
 
         <button type="submit">Submit</button>
       </form>
