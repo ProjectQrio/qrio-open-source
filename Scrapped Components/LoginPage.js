@@ -1,5 +1,5 @@
 
-import Header from "../src/components/MainNavigation.js";
+import Header from "../MainNavigation.js";
 import LoginForm from "./LoginForm.js";
 
 function LoginPage() {

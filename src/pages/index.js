@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import MainNavigation from "../components/MainNavigation.js";
+import MainNavigation from "../../MainNavigation.js";
 import ClaimsGrid from "../components/home-page/ClaimsGrid.js";
 import { MongoClient } from "mongodb";
 import Link from "next/link";

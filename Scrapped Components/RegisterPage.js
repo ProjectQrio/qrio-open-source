@@ -1,5 +1,5 @@
 
-import Header from "../src/components/MainNavigation.js";
+import Header from "../MainNavigation.js";
 import RegistrationForm from "./RegistrationForm.js";
 
 function RegisterPage() {

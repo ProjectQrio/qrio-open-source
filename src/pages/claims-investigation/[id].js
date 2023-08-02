@@ -1,5 +1,5 @@
 import { MongoClient, ObjectId } from 'mongodb';
-import MainNavigation from '../../components/MainNavigation';
+import MainNavigation from '../../../MainNavigation';
 import EvidenceGrid from './EvidenceGrid';
 import EvidenceForm from './EvidenceForm';
 import classes from './claimpage.module.css'
