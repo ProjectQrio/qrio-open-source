@@ -1,6 +1,6 @@
 import classes from './evidence-form.module.css'
 import { useState } from 'react';
-import { useSession } from 'next-auth/react'
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 
 function EvidenceForm() {
@@ -9,7 +9,7 @@ function EvidenceForm() {
   const [summary, setSummary] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const { data: session, status } = useSession()
+  const { data: session, status } = useUser()
   const loading = status === 'loading';
   const loggedIn = status === 'authenticated';
 

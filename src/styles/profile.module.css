@@ -1,0 +1,40 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Gap between elements */
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Round image */
+  object-fit: cover; /* Resize image to fit container */
+}
+
+.profileName {
+  font-size: 32px;
+  color: #030303;
+  margin-bottom: 5px; /* Reduced gap */
+}
+
+.profileInfo {
+  font-size: 20px;
+  color: #232327;
+}
+
+.resetPasswordButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #030303;
+  background-color: #BDE529;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transition for smooth color change */
+}
+
+.resetPasswordButton:hover {
+  color: #FFFEFE;
+  background-color: #252CFC;
+}

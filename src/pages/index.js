@@ -3,8 +3,6 @@ import styles from "@/styles/Home.module.css";
 import MainNavigation from "../../MainNavigation.js";
 import ClaimsGrid from "../components/home-page/ClaimsGrid.js";
 import { MongoClient } from "mongodb";
-import Link from "next/link";
-import Image from "next/image";
 
 
 
