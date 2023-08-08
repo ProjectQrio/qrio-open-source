@@ -1,33 +1,26 @@
-import classes from './evidence-form.module.css'
+import classes from './evidence-form.module.css';
 import { useState } from 'react';
-import { useSession } from 'next-auth/react'
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { useRouter } from 'next/router';
 
-
-function EvidenceForm() {
+function EvidenceForm({ claimId, onEvidenceSubmit }) {
+  const router = useRouter();
   const [sourceLink, setSourceLink] = useState('');
   const [position, setPosition] = useState('');
   const [summary, setSummary] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const { data: session, status } = useSession()
-  const loading = status === 'loading';
-  const loggedIn = status === 'authenticated';
+  const { user, error, isLoading } = useUser();
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-  // If session is loading, return a loading message
-if (loading) {
-  return <p>Loading...</p>;
-}
+  if (!user) {
+    return <p>Please create an account or log in to submit evidence.</p>;
+  }
 
-// If there is no session (user is not logged in)
-if (!loggedIn) {
-  return <p>Please create an account or log in to submit evidence.</p>;
-}
-
-
-  // Rest of your form code...
-
-
+  // Rest of your code...
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,14 +36,12 @@ if (!loggedIn) {
       return; // Stop form submission
     }
 
-    const user = session?.user?.name;  // <---- Add this line here
-    
     const response = await fetch('/api/evidence', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ sourceLink, position, summary, user:session.user.name }), // You can add any attribute from the user object available in the session
+      body: JSON.stringify({ sourceLink, position, summary, userId: user.sub, claimId }),
     });
 
     if (!response.ok) {
@@ -69,6 +60,8 @@ if (!loggedIn) {
     setTimeout(() => {
       setIsSubmitted(false);
     }, 3000);
+    // Refetch the evidence after successful form submission
+    onEvidenceSubmit();
   };
 
   return (

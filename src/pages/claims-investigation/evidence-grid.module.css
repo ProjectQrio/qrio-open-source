@@ -9,7 +9,6 @@
   border: 2px solid black;
   width: 70%; /* You might want to restrict the width of the grid */
   gap: 1px; /* This creates space between cells */
-  background-color: black; /* This will show through the gaps */
 }
 
 .evidenceHeader {
@@ -52,4 +51,27 @@
   font-size: 16px;
   font-weight: 500;
   color: black;
+}
+
+.evidenceGrid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.evidenceColumn {
+  flex: 1;
+  margin: 1em;
+}
+
+.evidenceCard {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1em 0;
+  background-color: white;
+}
+
+.header {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
