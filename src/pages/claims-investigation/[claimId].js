@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb';
 import MainNavigation from '../../../MainNavigation';
-import EvidenceGrid from './EvidenceGrid';
-import EvidenceForm from './EvidenceForm';
+import EvidenceGrid from '../../components/evidence-and-comments/EvidenceGrid';
+import EvidenceForm from '../../components/evidence-and-comments/EvidenceForm';
 import classes from './claimpage.module.css'
 import { useState, useEffect } from 'react';
 
@@ -61,6 +61,11 @@ export async function getStaticPaths() {
 export default function ClaimPage({ claim }) {
 
   const [evidence, setEvidence] = useState([]);
+  const [comments, setComments] = useState({});
+
+  const handleCommentSubmit = (evidenceId, commentText) => {
+    // Add the comment to the appropriate evidence item
+  };
 
 // Fetch evidence on component mount
 useEffect(() => {
@@ -86,6 +91,13 @@ const refetchEvidence = () => {
       <h1 className={classes.claimtitle}>{claim.title}</h1>
       <p className={classes.claimdescriptionp}>{claim.description}</p>
       <EvidenceGrid evidence={evidence}></EvidenceGrid>
+      {Object.keys(comments).map(evidenceId => (
+        <CommentsComponent
+          key={evidenceId}
+          comments={comments[evidenceId]}
+          onCommentSubmit={(e) => handleCommentSubmit(evidenceId, e.target.comment.value)}
+        />
+      ))}
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
     </div>
   );
