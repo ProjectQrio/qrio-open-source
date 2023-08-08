@@ -45,6 +45,25 @@ export default async function handler(req, res) {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
+    if (req.method === "POST" && req.url.endsWith('/comment')) {
+      const { evidenceId, commentText } = req.body;
+    
+      const comment = {
+        commentText,
+        userId: user.sub,
+        userName: user.name,
+        timestamp: new Date().toISOString(),
+      };
+    
+      await evidencesCollection.updateOne(
+        { _id: new ObjectId(evidenceId) },
+        { $push: { comments: comment } }
+      );
+    
+      res.status(200).json({ message: 'Comment added successfully!' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong." });    
   } finally {
     client.close();
   }
