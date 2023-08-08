@@ -36,15 +36,49 @@ export default async function handler(req, res) {
 
       res.status(200).json({ message: "Evidence added successfully!" });
     } else if (req.method === "GET") {
+      const { ObjectId } = require("mongodb");
       const { claimId } = req.query;
-
-      const evidence = await evidencesCollection.find({ claimId }).toArray();
-
+      
+      let query;
+    
+      // Attempt to convert claimId to an ObjectId, and if successful, use it in the query
+      try {
+        query = { claimId: new ObjectId(claimId) };
+      } catch (err) {
+        // If conversion fails, use the original claimId value as a string
+        query = { claimId };
+      }
+    
+      const evidence = await evidencesCollection.find(query).toArray();
+    
       res.status(200).json(evidence);
-    } else {
-      res.setHeader("Allow", ["POST", "GET"]);
-      res.status(405).json({ message: `Method ${req.method} is not allowed` });
-    }
+    
+      
+      } else if (req.method === "PUT") {
+        const { ObjectId } = require("mongodb");
+        const { evidenceId, commentText, claimId } = req.body;
+    
+        // Fetch user details from the session
+        const userId = session.user.sub;
+        const username = session.user.name;
+    
+        // Form the new comment object
+        const newComment = { userId, username, commentText, claimId };
+    
+        // Push the new comment into the evidence document's comments array
+        const result = await evidencesCollection.updateOne(
+          { _id: ObjectId(evidenceId) },
+          { $push: { comments: newComment } }
+        );
+    
+        res.status(200).json({ message: "Comment added successfully!" });
+
+      } else {
+        res.setHeader("Allow", ["POST", "GET", "PUT"]);
+        res.status(405).json({ message: `Method ${req.method} is not allowed` });
+      }
+
+
   } finally {
     client.close();
   }
