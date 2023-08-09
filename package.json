@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.0.1",
+    "auth0": "^3.6.0",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.8",
     "mongodb": "^5.6.0",

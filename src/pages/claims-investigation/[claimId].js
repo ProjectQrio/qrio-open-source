@@ -81,6 +81,7 @@ const refetchEvidence = () => {
     setEvidence(evidenceData);
     console.log(evidenceData);  // Log the fetched evidence
   });
+
 };
 
   // Render your page with the data
@@ -90,14 +91,7 @@ const refetchEvidence = () => {
       <img className={classes.claimImage} src={claim.image} alt={claim.title} />
       <h1 className={classes.claimtitle}>{claim.title}</h1>
       <p className={classes.claimdescriptionp}>{claim.description}</p>
-      <EvidenceGrid evidence={evidence}></EvidenceGrid>
-      {Object.keys(comments).map(evidenceId => (
-        <CommentsComponent
-          key={evidenceId}
-          comments={comments[evidenceId]}
-          onCommentSubmit={(e) => handleCommentSubmit(evidenceId, e.target.comment.value)}
-        />
-      ))}
+      <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
     </div>
   );

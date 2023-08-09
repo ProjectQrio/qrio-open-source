@@ -25,23 +25,34 @@ export default async function handler(req, res) {
 
     // Continue to handle the request if the session exists
     if (req.method === "POST") {
-      // Don't deconstruct the user from the request body here
       const { sourceLink, position, summary, userId, claimId } = req.body;
-
+    
       // Create the new evidence object using the data from the request and the user from the session
-      const newEvidence = { sourceLink, position, summary, userId, claimId };
-
+      const newEvidence = { sourceLink, position, summary, userId, claimId, timestamp: new Date() };
+    
       // Insert the new evidence object into the collection
       const result = await evidencesCollection.insertOne(newEvidence);
-
+    
       res.status(200).json({ message: "Evidence added successfully!" });
-    } else if (req.method === "GET") {
+    }
+  
+    else if (req.method === "GET") {
       const { claimId } = req.query;
-
-      const evidence = await evidencesCollection.find({ claimId }).toArray();
-
+    
+      const evidenceCollection = db.collection("evidences");
+      const commentsCollection = db.collection("comments"); // Assuming you have a 'comments' collection
+    
+      const evidence = await evidenceCollection.find({ claimId }).toArray();
+    
+      // Fetch comments for each evidence and attach them
+      for (let i = 0; i < evidence.length; i++) {
+        const evidenceComments = await commentsCollection.find({ evidenceId: evidence[i]._id.toString() }).toArray();
+        evidence[i].comments = evidenceComments;
+      }
+    
       res.status(200).json(evidence);
-    } else {
+    }
+     else {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
