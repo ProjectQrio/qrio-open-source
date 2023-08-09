@@ -24,18 +24,23 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
   const renderEvidenceColumn = (evidenceItems) => (
     evidenceItems.map((evidenceItem, index) => (
       <div key={index} className={classes.evidenceCard}>
-        <p className={classes.evidenceText}>{evidenceItem.summary}</p>
+        <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
+          {evidenceItem.sourceLink}
+        </a>
+        <div dangerouslySetInnerHTML={{ __html: evidenceItem.summary }} className={classes.evidenceText} />
         <button onClick={() => toggleCommentForm(evidenceItem._id)}>+</button>
         {showingCommentFormFor === evidenceItem._id && (
-    <CommentsComponent
-    comments={evidenceItem.comments}
-    onCommentSubmit={(e, userId) => handleCommentSubmit(e, evidenceItem._id, userId, claimId)}
-    claimId={claimId}
-  />
+          <CommentsComponent
+            comments={evidenceItem.comments}
+            onCommentSubmit={(e, userId) => handleCommentSubmit(e, evidenceItem._id, userId, claimId)}
+            claimId={claimId}
+          />
         )}
       </div>
     ))
   );
+  
+  
 
   const handleCommentSubmit = async (e, evidenceId, userId, claimId) => {
     e.preventDefault();
@@ -61,7 +66,7 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
       setComments(commentsData.comments);
     }
   };
-  
+
   return (
     <div className={classes.evidenceGrid}>
       <div className={classes.evidenceColumn}>
