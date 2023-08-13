@@ -22,25 +22,31 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
   };
 
   const renderEvidenceColumn = (evidenceItems) => (
-    evidenceItems.map((evidenceItem, index) => (
-      <div key={index} className={classes.evidenceCard}>
-        <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
-          {evidenceItem.sourceLink}
-        </a>
-        <div dangerouslySetInnerHTML={{ __html: evidenceItem.summary }} className={classes.evidenceText} />
-        <button onClick={() => toggleCommentForm(evidenceItem._id)}>+</button>
-        {showingCommentFormFor === evidenceItem._id && (
-          <CommentsComponent
-            comments={evidenceItem.comments}
-            onCommentSubmit={(e, userId) => handleCommentSubmit(e, evidenceItem._id, userId, claimId)}
-            claimId={claimId}
-          />
-        )}
-      </div>
-    ))
-  );
-  
-  
+    evidenceItems.map((evidenceItem, index) => {
+        const formattedSummary = evidenceItem.summary.replace(/\n/g, '<br>');
+        console.log(formattedSummary); // Use formattedSummary to log 
+
+        return (
+            <div key={index} className={classes.evidenceCard}>
+                <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
+                    {evidenceItem.sourceLink}
+                </a>
+                {/* Use the formattedSummary here */}
+                <div dangerouslySetInnerHTML={{ __html: formattedSummary }}/>
+                <button onClick={() => toggleCommentForm(evidenceItem._id)}>+</button>
+                {showingCommentFormFor === evidenceItem._id && (
+                    <CommentsComponent
+                        comments={evidenceItem.comments}
+                        onCommentSubmit={(e, userId) => handleCommentSubmit(e, evidenceItem._id, userId, claimId)}
+                        claimId={claimId}
+                    />
+                )}
+            </div>
+        );
+    })
+);
+
+
 
   const handleCommentSubmit = async (e, evidenceId, userId, claimId) => {
     e.preventDefault();

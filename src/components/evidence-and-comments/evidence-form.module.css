@@ -95,3 +95,8 @@
   font-size: 1.17em;
   font-weight: bold;
 }
+
+
+.public-DraftStyleDefault-pre {
+  white-space: pre-wrap;
+}
