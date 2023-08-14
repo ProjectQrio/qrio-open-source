@@ -17,25 +17,29 @@ export default async function handler(req, res) {
       const comments = await commentsCollection.find({}).toArray(); // Fetch all comments
       res.status(200).json({ comments });
     } else if (req.method === "POST") {
-      if (!session || !session.user) {
-        res.status(401).json({ message: "Please log in to submit a comment." });
-        return;
-      }
+        if (!session || !session.user) {
+            res.status(401).json({ message: "Please log in to submit a comment." });
+            return;
+          }
+        
+          const { evidenceId, commentText, claimId } = req.body;
+          const userId = session.user.sub; // Get the userId from the session
+          const authorName = session.user.name || session.user.nickname; // Get the author's name or nickname from the session
+        
 
-      const { evidenceId, commentText, claimId } = req.body;
-      const userId = session.user.sub; // Get the userId from the session
-
-      // Insert the comment into the comments collection
-      const result = await commentsCollection.insertOne({
+    // Insert the comment into the comments collection
+    const result = await commentsCollection.insertOne({
         evidenceId,
         commentText,
         userId,
+        authorName, // Include the author's name
         claimId,
         timestamp: new Date(), // Add a timestamp
       });
-
+    
       res.status(200).json({ message: "Comment added successfully!" });
-    } else {
+    }
+     else {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }

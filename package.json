@@ -13,10 +13,13 @@
     "auth0": "^3.6.0",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.8",
+    "draft-js": "^0.11.7",
+    "draft-js-export-html": "^1.4.1",
     "mongodb": "^5.6.0",
     "next": "13.4.4",
     "next-auth": "^4.22.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanitize-html": "^2.11.0"
   }
 }

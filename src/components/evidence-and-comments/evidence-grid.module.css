@@ -76,8 +76,14 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.comment {
-  margin-left: 20px;
-  font-size: smaller;
-  color: grey;
+.evidenceUrl {
+  color: #252CFC;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 10px; /* Optional: adds some space between the link and the summary */
+  display: block; /* Makes the link take up the full width of its container, so the summary appears on a new line */
+}
+
+.evidenceUrl:hover {
+  text-decoration: underline;
 }

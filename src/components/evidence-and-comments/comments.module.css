@@ -1,0 +1,45 @@
+.commentsContainer {
+    margin: 20px;
+  }
+  
+  .comment {
+    margin: 10px;
+    padding: 2px;
+    font-size: 14px; /* Adjust the font size of the comment text here */
+    color: #555; /* Slightly lighter color for the comments */
+  }
+  
+  .commentAuthor {
+    font-weight: bold;
+  }
+  
+  .commentFormContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .commentFormInput {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px; /* Normal font size for the input */
+  }
+  
+  .commentFormSubmitButton {
+    height: 40px;
+    padding: 0 10px; /* 10 points padding around the text */
+    color: white;
+    background-color: #787FFA;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .commentFormSubmitButton:hover {
+    background-color: #252CFC;
+  }
+  
