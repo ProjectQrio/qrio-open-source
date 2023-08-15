@@ -11,7 +11,6 @@ export default function CommentsComponent({ comments, onCommentSubmit, claimId }
       .then(data => setSession(data));
   }, []);
 
-  // Render comments and a form to add a comment
   return (
     <div className={classes.commentsContainer}>
       {comments && comments.map((comment, index) => (
@@ -22,11 +21,26 @@ export default function CommentsComponent({ comments, onCommentSubmit, claimId }
       ))}
       <form
         className={classes.commentFormContainer}
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
           if (session && session.user) {
-            onCommentSubmit(e, session.user.sub, claimId, commentText);
-            setCommentText(""); // Clear the input
+            // Call the provided onCommentSubmit function
+            onCommentSubmit(e, session.user.sub);
+
+
+
+
+            // Update the user's comment count
+            await fetch('/api/updateUserCommentCount', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ userId: session.user.sub })
+            });
+
+            // Clear the comment input field
+            setCommentText("");
           }
         }}
       >
@@ -34,8 +48,8 @@ export default function CommentsComponent({ comments, onCommentSubmit, claimId }
           className={classes.commentFormInput}
           type="text"
           name="comment"
-          value={commentText} // Controlled input
-          onChange={(e) => setCommentText(e.target.value)} // Update state on change
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
           required
         />
         <button className={classes.commentFormSubmitButton} type="submit">Submit</button>

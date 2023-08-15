@@ -1,15 +1,17 @@
-import classes from './evidence-form.module.css';
-import { useState, useRef } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
-import 'draft-js/dist/Draft.css';
-import { convertToRaw, EditorState, Editor } from 'draft-js';
-import { stateToHTML } from 'draft-js-export-html';
-import sanitizeHtml from 'sanitize-html';
+import classes from "./evidence-form.module.css";
+import { useState, useRef } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import "draft-js/dist/Draft.css";
+import { convertToRaw, EditorState, Editor } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
+import sanitizeHtml from "sanitize-html";
 
 function EvidenceForm({ claimId, onEvidenceSubmit }) {
-  const [sourceLink, setSourceLink] = useState('');
-  const [position, setPosition] = useState('');
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+  const [sourceLink, setSourceLink] = useState("");
+  const [position, setPosition] = useState("");
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const { user, error, isLoading } = useUser();
@@ -27,51 +29,75 @@ function EvidenceForm({ claimId, onEvidenceSubmit }) {
 
     const blockToHTMLConfig = {
       unstyled: (elem) => {
-        if (elem.text === '\n') {
+        if (elem.text === "\n") {
           return <br />;
         }
         return <p>{elem.children}</p>;
       },
     };
-    
-    const summaryHtml = stateToHTML(editorState.getCurrentContent(), { blockToHTML: blockToHTMLConfig });
+
+    const summaryHtml = stateToHTML(editorState.getCurrentContent(), {
+      blockToHTML: blockToHTMLConfig,
+    });
     const cleanHtml = sanitizeHtml(summaryHtml, {
-      allowedTags: ['b', 'i', 'em', 'strong', 'a'],
+      allowedTags: ["b", "i", "em", "strong", "a"],
       allowedAttributes: {
-        'a': ['href'],
+        a: ["href"],
       },
     });
 
-
     const rawContentState = convertToRaw(editorState.getCurrentContent());
     const summary = editorState.getCurrentContent().getPlainText();
-        
-    if (!sourceLink || !position || summary === JSON.stringify(convertToRaw(EditorState.createEmpty().getCurrentContent()))) {
-      setErrorMessage('All fields are required.');
+
+    if (
+      !sourceLink ||
+      !position ||
+      summary ===
+        JSON.stringify(
+          convertToRaw(EditorState.createEmpty().getCurrentContent())
+        )
+    ) {
+      setErrorMessage("All fields are required.");
       return;
     }
 
     if (summary.length < 50) {
-      setErrorMessage('Summary must be at least 50 characters long.');
+      setErrorMessage("Summary must be at least 50 characters long.");
       return;
     }
 
-    const response = await fetch('/api/evidence', {
-      method: 'POST',
+try {
+
+    const response = await fetch("/api/evidence", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ sourceLink, position, summary: cleanHtml, userId: user.sub, claimId }),
+      body: JSON.stringify({
+        sourceLink,
+        position,
+        summary: cleanHtml,
+        userId: user.sub,
+        claimId,
+      }),
     });
 
     if (!response.ok) {
       const responseData = await response.json();
-      setErrorMessage(responseData.message || 'Something went wrong!');
+      setErrorMessage(responseData.message || "Something went wrong!");
       return;
     }
 
-    setSourceLink('');
-    setPosition('');
+    await fetch("/api/updateUserEvidenceCount", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: user.sub }),
+    });
+
+    setSourceLink("");
+    setPosition("");
     setEditorState(EditorState.createEmpty());
 
     setIsSubmitted(true);
@@ -81,17 +107,19 @@ function EvidenceForm({ claimId, onEvidenceSubmit }) {
     }, 3000);
 
     onEvidenceSubmit();
+  } catch (error) {
+    setErrorMessage("An unexpected error occurred. Please try again later.");
+}
   };
 
   function getBlockStyle(block) {
     switch (block.getType()) {
-        case 'unstyled':
-            return 'public-DraftStyleDefault-pre';
-        default:
-            return '';
+      case "unstyled":
+        return "public-DraftStyleDefault-pre";
+      default:
+        return "";
     }
-}
-
+  }
 
   return (
     <div className={classes.contactFormContainer}>
@@ -99,12 +127,21 @@ function EvidenceForm({ claimId, onEvidenceSubmit }) {
         <h2 className={classes.formTitle}>Submit Evidence</h2>
         <label>
           Source Link:
-          <input type="url" value={sourceLink} onChange={e => setSourceLink(e.target.value)} required />
+          <input
+            type="url"
+            value={sourceLink}
+            onChange={(e) => setSourceLink(e.target.value)}
+            required
+          />
         </label>
 
         <label>
           Position:
-          <select value={position} onChange={e => setPosition(e.target.value)} required>
+          <select
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+            required
+          >
             <option value="">Select...</option>
             <option value="for">For</option>
             <option value="against">Against</option>
@@ -114,9 +151,10 @@ function EvidenceForm({ claimId, onEvidenceSubmit }) {
         <label htmlFor="summary">Summary:</label>
         <div className={classes.editorContainer}>
           <Editor
-              editorState={editorState}
-              onChange={setEditorState} 
-              blockStyleFn={getBlockStyle}           />
+            editorState={editorState}
+            onChange={setEditorState}
+            blockStyleFn={getBlockStyle}
+          />
         </div>
 
         <button type="submit">Submit</button>
@@ -124,7 +162,9 @@ function EvidenceForm({ claimId, onEvidenceSubmit }) {
 
       {errorMessage && <p className={classes.errorMessage}>{errorMessage}</p>}
 
-      {isSubmitted && <p className={classes.successMessage}>Form successfully submitted!</p>}
+      {isSubmitted && (
+        <p className={classes.successMessage}>Form successfully submitted!</p>
+      )}
     </div>
   );
 }

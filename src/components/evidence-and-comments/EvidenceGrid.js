@@ -48,10 +48,10 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
 
 
 
-  const handleCommentSubmit = async (e, evidenceId, userId, claimId) => {
-    e.preventDefault();
+const handleCommentSubmit = async (event, evidenceId, userId, claimId) => {
+  event.preventDefault();
 
-    const commentText = e.target.comment.value;
+  const commentText = event.target.comment.value;
 
     // Post the comment to /api/comments
     const response = await fetch('/api/comments', {

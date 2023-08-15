@@ -13,23 +13,23 @@ export default function HomePage({ claims }) {
     const fetchSession = async () => {
       const response = await fetch('/api/session');
       const data = await response.json();
-
-      // Check if the API call was already made
+    
       if (data && data.user && !hasCalledAPI.current) {
         const userId = data.user.sub;
-
+        const userName = data.user.name || data.user.nickname; // Extracting the user name.
+    
         fetch('/api/checkUserLogin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userId })
+          body: JSON.stringify({ userId, userName })  // Pass both userId and userName.
         });
-
-        // Set hasCalledAPI to true after making the fetch call
+    
         hasCalledAPI.current = true;
       }
     };
+    
 
     fetchSession();
   }, []); // Removed hasFetched from the dependency array
