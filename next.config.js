@@ -1,26 +1,16 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-}
 
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+      };
+    }
 
-module.exports = (phase) => {
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-  return {
-    env: {
-      NEXTAUTH_URL: 'http://localhost.3000',
-      NEXTAUTH_SECRET: AeeDgGTNO5SSMnxWobis0LgUIVt7KuXMYtbL8Wj5Xq4
-    },
-  };
-}
-
-return {
-  env: {
-
+    return config;
   },
 };
-};
-
-module.exports = nextConfig

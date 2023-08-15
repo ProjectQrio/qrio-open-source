@@ -3,10 +3,39 @@ import styles from "@/styles/Home.module.css";
 import MainNavigation from "../../MainNavigation.js";
 import ClaimsGrid from "../components/home-page/ClaimsGrid.js";
 import { MongoClient } from "mongodb";
-
-
+import { useEffect, useRef } from 'react'; // Imported useRef
 
 export default function HomePage({ claims }) {
+  // Replace hasFetched state with a useRef
+  const hasCalledAPI = useRef(false);
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const response = await fetch('/api/session');
+      const data = await response.json();
+
+      // Check if the API call was already made
+      if (data && data.user && !hasCalledAPI.current) {
+        const userId = data.user.sub;
+
+        fetch('/api/checkUserLogin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId })
+        });
+
+        // Set hasCalledAPI to true after making the fetch call
+        hasCalledAPI.current = true;
+      }
+    };
+
+    fetchSession();
+  }, []); // Removed hasFetched from the dependency array
+
+  console.log("HomePage component rendered");
+
   return (
     <>
       <Head>

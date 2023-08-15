@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^3.0.1",
+    "@auth0/nextjs-auth0": "^3.1.0",
     "auth0": "^3.6.0",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.8",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
-    "mongodb": "^5.6.0",
-    "next": "13.4.4",
+    "mongodb": "^5.7.0",
+    "next": "^13.4.15",
     "next-auth": "^4.22.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
