@@ -2,11 +2,10 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import MainNavigation from "../../MainNavigation.js";
 import ClaimsGrid from "../components/home-page/ClaimsGrid.js";
-import { MongoClient } from "mongodb";
-import { useEffect, useRef } from 'react'; // Imported useRef
+import { useEffect, useRef } from 'react';
+import { connectToDatabase } from '../api/database';  // Import the function from database.js
 
 export default function HomePage({ claims }) {
-  // Replace hasFetched state with a useRef
   const hasCalledAPI = useRef(false);
 
   useEffect(() => {
@@ -16,14 +15,14 @@ export default function HomePage({ claims }) {
     
       if (data && data.user && !hasCalledAPI.current) {
         const userId = data.user.sub;
-        const userName = data.user.name || data.user.nickname; // Extracting the user name.
+        const userName = data.user.name || data.user.nickname;
     
         fetch('/api/checkUserLogin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userId, userName })  // Pass both userId and userName.
+          body: JSON.stringify({ userId, userName })
         });
     
         hasCalledAPI.current = true;
@@ -32,7 +31,7 @@ export default function HomePage({ claims }) {
     
 
     fetchSession();
-  }, []); // Removed hasFetched from the dependency array
+  }, []);
 
   console.log("HomePage component rendered");
 
@@ -67,13 +66,10 @@ export default function HomePage({ claims }) {
 }
 
 export async function getStaticProps() {
-  const client = await MongoClient.connect("mongodb+srv://readuser:m2fYMhAwsrBb0c2iEq21fhx3@cluster0.ituqmyx.mongodb.net/?retryWrites=true&w=majority");
-  const db = client.db();
-
+  const { client, db } = await connectToDatabase();
   const claimsCollection = db.collection("claims");
 
   const claims = await claimsCollection.find().toArray();
-
   client.close();
 
   return {
@@ -81,9 +77,9 @@ export async function getStaticProps() {
       claims: claims.map(claim => ({
         title: claim.title,
         image: claim.image,
-        id: claim._id.toString(),  // _id needs to be converted to string
+        id: claim._id.toString(),
       }))
     },
-    revalidate: 1,  // optional, enables Incremental Static Regeneration
+    revalidate: 1,
   };
 }
