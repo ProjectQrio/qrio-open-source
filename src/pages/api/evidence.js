@@ -1,13 +1,10 @@
-import { MongoClient } from "mongodb";
 import { getSession } from "@auth0/nextjs-auth0";
+import { connectToDatabase } from './database'; 
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
 
-  const client = await MongoClient.connect(
-    "mongodb+srv://nextjsuser:RD2kvgKHiqNN5Fz6G7WwuB8o@cluster0.ituqmyx.mongodb.net/?retryWrites=true&w=majority"
-  );
-  const db = client.db();
+  const { client, db } = await connectToDatabase();
   const evidencesCollection = db.collection("evidences");
 
   try {
@@ -39,10 +36,9 @@ export default async function handler(req, res) {
     else if (req.method === "GET") {
       const { claimId } = req.query;
     
-      const evidenceCollection = db.collection("evidences");
       const commentsCollection = db.collection("comments"); // Assuming you have a 'comments' collection
     
-      const evidence = await evidenceCollection.find({ claimId }).toArray();
+      const evidence = await evidencesCollection.find({ claimId }).toArray();
     
       // Fetch comments for each evidence and attach them
       for (let i = 0; i < evidence.length; i++) {

@@ -1,10 +1,10 @@
-import { MongoClient, ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import MainNavigation from '../../../MainNavigation';
 import EvidenceGrid from '../../components/evidence-and-comments/EvidenceGrid';
 import EvidenceForm from '../../components/evidence-and-comments/EvidenceForm';
 import classes from './claimpage.module.css'
 import { useState, useEffect } from 'react';
-
+import { connectToDatabase } from '../api/database'; 
 
 async function fetchEvidence(claimId) {
   const res = await fetch(`/api/evidence?claimId=${claimId}`);
@@ -19,47 +19,36 @@ async function fetchEvidence(claimId) {
   return evidence;
 }
 
-
-// This function gets called at build time
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const client = await MongoClient.connect('mongodb+srv://nextjsuser:RD2kvgKHiqNN5Fz6G7WwuB8o@cluster0.ituqmyx.mongodb.net/?retryWrites=true&w=majority');
-  const db = client.db();
-
+  const { client, db } = await connectToDatabase();
   const claimsCollection = db.collection('claims');
 
-  // Modify this line to use the _id field
   const claim = await claimsCollection.findOne({ _id: new ObjectId(params.claimId) });
-
   client.close();
 
   return {
     props: {
-      claim: JSON.parse(JSON.stringify(claim)), // MongoDB data needs to be serialized
+      claim: JSON.parse(JSON.stringify(claim)), 
     },
   };
 }
 
-// This function gets called at build time
 export async function getStaticPaths() {
-  const client = await MongoClient.connect('mongodb+srv://readuser:m2fYMhAwsrBb0c2iEq21fhx3@cluster0.ituqmyx.mongodb.net/?retryWrites=true&w=majority');
-  const db = client.db();
-
+  const { client, db } = await connectToDatabase();
   const claimsCollection = db.collection('claims');
 
   const claims = await claimsCollection.find({}, { _id: 1 }).toArray();
-
   client.close();
 
   return {
     paths: claims.map((claim) => ({ params: { claimId: claim._id.toString() } })),
-    fallback: 'blocking', // See the documentation for a discussion of fallback
+    fallback: 'blocking',
   };
 }
 
 export default function ClaimPage({ claim }) {
-
   const [evidence, setEvidence] = useState([]);
   const [comments, setComments] = useState({});
 
@@ -67,24 +56,20 @@ export default function ClaimPage({ claim }) {
     // Add the comment to the appropriate evidence item
   };
 
-// Fetch evidence on component mount
-useEffect(() => {
-  fetchEvidence(claim._id).then(evidenceData => {
-    setEvidence(evidenceData);
-    console.log(evidenceData);  // Log the fetched evidence
-  });
-}, [claim._id]);
+  useEffect(() => {
+    fetchEvidence(claim._id).then(evidenceData => {
+      setEvidence(evidenceData);
+      console.log(evidenceData);
+    });
+  }, [claim._id]);
 
-// Function to refetch the evidence
-const refetchEvidence = () => {
-  fetchEvidence(claim._id).then(evidenceData => {
-    setEvidence(evidenceData);
-    console.log(evidenceData);  // Log the fetched evidence
-  });
+  const refetchEvidence = () => {
+    fetchEvidence(claim._id).then(evidenceData => {
+      setEvidence(evidenceData);
+      console.log(evidenceData);
+    });
+  };
 
-};
-
-  // Render your page with the data
   return (
     <div>
       <MainNavigation></MainNavigation>

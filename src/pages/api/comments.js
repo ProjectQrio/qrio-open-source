@@ -1,45 +1,37 @@
-import { MongoClient } from "mongodb";
 import { getSession } from "@auth0/nextjs-auth0";
+import { connectToDatabase } from "./database"; 
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
 
-  const client = await MongoClient.connect(
-    "mongodb+srv://nextjsuser:RD2kvgKHiqNN5Fz6G7WwuB8o@cluster0.ituqmyx.mongodb.net/?retryWrites=true&w=majority"
-  );
-  const db = client.db();
+  const { db, client } = await connectToDatabase();
+
   const commentsCollection = db.collection("comments");
 
   try {
     if (req.method === 'GET') {
-      // Handle the GET request to retrieve comments
-      // Fetch the comments data from your database or any other source
-      const comments = await commentsCollection.find({}).toArray(); // Fetch all comments
+      const comments = await commentsCollection.find({}).toArray();
       res.status(200).json({ comments });
     } else if (req.method === "POST") {
-        if (!session || !session.user) {
-            res.status(401).json({ message: "Please log in to submit a comment." });
-            return;
-          }
-        
-          const { evidenceId, commentText, claimId } = req.body;
-          const userId = session.user.sub; // Get the userId from the session
-          const authorName = session.user.name || session.user.nickname; // Get the author's name or nickname from the session
-        
+      if (!session || !session.user) {
+        res.status(401).json({ message: "Please log in to submit a comment." });
+        return;
+      }
+      const { evidenceId, commentText, claimId } = req.body;
+      const userId = session.user.sub;
+      const authorName = session.user.name || session.user.nickname;
 
-    // Insert the comment into the comments collection
-    const result = await commentsCollection.insertOne({
+      const result = await commentsCollection.insertOne({
         evidenceId,
         commentText,
         userId,
-        authorName, // Include the author's name
+        authorName,
         claimId,
-        timestamp: new Date(), // Add a timestamp
+        timestamp: new Date(),
       });
-    
+
       res.status(200).json({ message: "Comment added successfully!" });
-    }
-     else {
+    } else {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
