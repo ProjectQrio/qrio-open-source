@@ -3,7 +3,7 @@ import styles from "@/styles/Home.module.css";
 import MainNavigation from "../../MainNavigation.js";
 import ClaimsGrid from "../components/home-page/ClaimsGrid.js";
 import { useEffect, useRef } from 'react';
-import { connectToDatabase } from '../api/database';  // Import the function from database.js
+import { connectToDatabase } from './api/database';  // Import the function from database.js
 
 export default function HomePage({ claims }) {
   const hasCalledAPI = useRef(false);
