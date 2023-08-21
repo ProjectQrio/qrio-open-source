@@ -3,10 +3,10 @@ import { MongoClient } from 'mongodb';
 let cachedClient = null;
 
 export async function connectToDatabase() {
-    if (cachedClient && cachedClient.topology.isConnected()) {
+    if (cachedClient && cachedClient.topology && cachedClient.topology.isConnected()) {
         console.log('Using cached database instance');
         return { client: cachedClient, db: cachedClient.db(process.env.MONGODB_DB) };
-    }
+    }    
 
     const client = await MongoClient.connect(process.env.MONGODB_URI);
     console.log('Connected to database');

@@ -52,10 +52,6 @@ export default function ClaimPage({ claim }) {
   const [evidence, setEvidence] = useState([]);
   const [comments, setComments] = useState({});
 
-  const handleCommentSubmit = (evidenceId, commentText) => {
-    // Add the comment to the appropriate evidence item
-  };
-
   useEffect(() => {
     fetchEvidence(claim._id).then(evidenceData => {
       setEvidence(evidenceData);
