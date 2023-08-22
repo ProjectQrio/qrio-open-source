@@ -1,0 +1,36 @@
+/* EvidenceTicker.module.css */
+.tickerContainer {
+    width: 100%;
+    border: 1px solid #89c147;  /* Bright green */
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 65%;  /* Adjust this percentage to your desired width */
+    margin: 0 auto; 
+    margin-bottom: 100px;
+}
+
+.evidenceItem {
+    padding: 15px;
+    border-bottom: 1px solid #89c147;
+    background-color: #f4f4f4; /* Light grey to give some contrast */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.evidenceItem:last-child {
+    border-bottom: none; /* To remove the bottom border from the last item */
+}
+
+.evidenceItem p {
+    font-size: 16px;
+    margin: 2px;
+}
+
+.evidenceItem p .userName {
+    font-weight: bold;
+}
+
+.evidenceSummary {
+    margin-left: 5px;
+}
