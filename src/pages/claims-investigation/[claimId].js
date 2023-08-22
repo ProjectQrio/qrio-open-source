@@ -5,6 +5,7 @@ import EvidenceForm from '../../components/evidence-and-comments/EvidenceForm';
 import classes from './claimpage.module.css'
 import { useState, useEffect } from 'react';
 import { connectToDatabase } from '../api/database'; 
+import Footer from '../../components/Footer'
 
 async function fetchEvidence(claimId) {
   const res = await fetch(`/api/evidence?claimId=${claimId}`);
@@ -74,6 +75,7 @@ export default function ClaimPage({ claim }) {
       <p className={classes.claimdescriptionp}>{claim.description}</p>
       <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
+      <Footer />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import MainNavigation from "../../MainNavigation.js";
 import styles from "../styles/profile.module.css";
+import Footer from "../components/Footer.js";
 
 
 export default function Profile() {
@@ -20,7 +21,9 @@ export default function Profile() {
             <img className={styles.profileImage} src={user.picture} alt={user.name} />
             <h2 className={styles.profileName}>{user.name}</h2>
             <p className={styles.profileInfo}>{user.email}</p>
+            <Footer />
           </div></div>
+
       )
   );
 }
