@@ -16,11 +16,11 @@ export default function GetStartedPage() {
           <div className={styles.textImageCombo}>
           <img className={styles.imgStacia} src="https://2ndlook.news/wp-content/uploads/2022/11/IMG_8251-e1669860045885.jpg" alt="Stacia at Desk" />
           <p className={styles.p}>Hey there! <br></br><br></br>
-          My name is Stacia, and I'm the creator of Project Qrio. 
+          I'm Stacia, the creator of Project Qrio. 
           <br></br><br></br>
           The idea came out of a peer reviewed news publication I founded called <Link href="https://2ndlook.news">2ndLook News</Link>. A major challenge we ran into with 2ndLook News was that putting in the work to publish nuanced content in a top-down fashion was extremely expensive and time consuming. I also think people are more inclined to read social media-sized snippets more than long form articles.
           <br></br><br></br>
-          That's why I decided to create Project Qrio, which aims to be a more decentralized method for achieving the same goals.</p>
+          That's why Project Qrio aims to be a more decentralized method for achieving the same goals.</p>
           </div>
           <h3 className={styles.h3}>The Purpose of Project Qrio</h3>
           <div className={styles.textImageCombo}>
