@@ -13,6 +13,7 @@ export default function GetStartedPage() {
         <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.h1}>Welcome to Project Qrio!</h1>
+          <div className={styles.textImageCombo}>
           <img className={styles.imgStacia} src="https://2ndlook.news/wp-content/uploads/2022/11/IMG_8251-e1669860045885.jpg" alt="Stacia at Desk" />
           <p className={styles.p}>Hey there! <br></br><br></br>
           My name is Stacia, and I'm the creator of Project Qrio. 
@@ -20,11 +21,9 @@ export default function GetStartedPage() {
           The idea came out of a peer reviewed news publication I founded called <Link href="https://2ndlook.news">2ndLook News</Link>. A major challenge we ran into with 2ndLook News was that putting in the work to publish nuanced content in a top-down fashion was extremely expensive and time consuming. I also think people are more inclined to read social media-sized snippets more than long form articles.
           <br></br><br></br>
           That's why I decided to create Project Qrio, which aims to be a more decentralized method for achieving the same goals.</p>
-          
+          </div>
           <h3 className={styles.h3}>The Purpose of Project Qrio</h3>
-          
-          <img className={styles.imgRight} src="https://2ndlook.news/wp-content/uploads/2023/08/Shit-You-Dont-Know-You-Dont-Know.png" alt="Shit You Don't Know You Don't Know" />
-          <div class="clearfix"></div>
+          <div className={styles.textImageCombo}>
           <p className={styles.p}>
             Project Qrio is based on the premise that everyone is inherently biased. We all come from our own perspectives, with our own life experience, and none of us know what we don't know. So that means we need to work together if we want to get as close to the truth as possible.
             <br></br><br></br>
@@ -34,7 +33,8 @@ export default function GetStartedPage() {
             <br></br><br></br>
             In the future, we have plans to add functionality that will help the best information rise to the top.
           </p>
-
+          <img className={styles.imgRight} src="https://2ndlook.news/wp-content/uploads/2023/08/Shit-You-Dont-Know-You-Dont-Know.png" alt="Shit You Don't Know You Don't Know" />
+</div>
           <h3 className={styles.h3}>This is an Early Version</h3>
           <p className={styles.p}>Please note that this is a very early version of the app. We still have a lot of functionality we plan to add. This version is only built for desktop viewing, and I'll admit it's not very pretty. The purpose of putting it out there for a select group to start using is to get feedback on the core functionality of the app. We want to know if it is useful, and if it is easy to use. We also want to know what features you would like to see added.
           <br></br><br></br>

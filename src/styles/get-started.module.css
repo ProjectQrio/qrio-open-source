@@ -35,7 +35,7 @@
     margin-bottom: 20px; /* Space between paragraphs */
     line-height: 1.6; /* Improved readability of text */
     text-align: justify; /* Makes the text spread evenly */
-    padding: 5px;
+   
   }
   
   /* This will align the image to the right with text on its left */
@@ -58,19 +58,15 @@
     object-fit: cover;
   }
 
+  .textImageCombo {
+    display: flex; /* This sets the container to use Flexbox */
+    align-items: flex-start; /* This ensures items are aligned to the top */
+    gap: 25px; /* This provides spacing between flex items */
+}
+
   .imgStacia {
-    float: left;
-    margin-right: 30px; /* Space between image and text */
     width: 300px;
     height: 300px;
     border-radius: 10%; 
     object-fit: cover;
   }
-  
-  /* Clear floats after the container */
-  .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  
