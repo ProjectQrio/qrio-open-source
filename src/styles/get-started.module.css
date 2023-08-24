@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .content {
+    width: 65%; /* This makes your content take up 75% of the container's width */
+  }
+  
+  .h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .p {
+    font-family: 'Roboto', sans-serif; /* Added the font family to paragraph */
+    font-size: 17px;
+    margin-bottom: 20px; /* Space between paragraphs */
+    line-height: 1.6; /* Improved readability of text */
+    text-align: justify; /* Makes the text spread evenly */
+    padding: 5px;
+  }
+  
+  /* This will align the image to the right with text on its left */
+  .imgRight {
+    float: right;
+    margin-left: 20px; /* Space between image and text */
+    width: 380px;
+    height: 380px;
+    border-radius: 10%; 
+    object-fit: cover;
+  }
+  
+  /* This will align the image to the left with text on its right */
+  .imgLeft {
+    float: left;
+    margin-right: 20px; /* Space between image and text */
+    width: 350px;
+    height: 350px;
+    border-radius: 10%; 
+    object-fit: cover;
+  }
+
+  .imgStacia {
+    float: left;
+    margin-right: 30px; /* Space between image and text */
+    width: 300px;
+    height: 300px;
+    border-radius: 10%; 
+    object-fit: cover;
+  }
+  
+  /* Clear floats after the container */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  

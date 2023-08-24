@@ -32,7 +32,17 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container, 
                               this may cause the image to be cropped */
-  margin-bottom: 80px
+  margin-bottom: 70px
+}
+
+.h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .underheaderDescriptionp {
@@ -41,13 +51,28 @@
   font-weight: 600;
   color: black;
   align-items: center;
-  margin-left: 350px;
-  margin-right: 350px;
-  margin-bottom: 65px;
+  margin-left: 420px;
+  margin-right: 420px;
+  margin-bottom: 35px;
 }
 
 
+.getStartedButton {
+  height: 50px;
+  width: 13%; /* You may add this line to make the submit button also extend to the full width */
+  color: white;
+  background-color: #787FFA;
+  border: none;
+  font-size: 20px; 
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 35px;
+}
 
+.getStartedButton:hover {
+  background-color: #252CFC;
+}
 
 
 /* Mobile */

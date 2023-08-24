@@ -3,7 +3,7 @@ function Footer() {
       <footer style={styles.footer}>
         <p style={styles.text}>
           © Stacia Wilson / Project Qrio 2023. 
-          If you have any feedback, ideas, or problems with the site, 
+          If you have any questions, feedback, ideas, or problems with the site, 
           please <a href="mailto:projectqrio@gmail.com" style={styles.link}>email me</a>.
         </p>
       </footer>

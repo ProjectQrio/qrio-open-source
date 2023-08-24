@@ -21,11 +21,11 @@ export default function MainNavigation() {
       </div>
       <div className={classes.linkscontainer}>
         <Link href="/">Home</Link>
-        {!isLoading && (user ? (
-            <>
-            <Link href="/get-started">
+        <Link href="/get-started">
               About
             </Link>
+        {!isLoading && (user ? (
+            <>
             <Link href="/profile">
               Profile
             </Link>
