@@ -51,7 +51,7 @@ export default function HomePage({ claims }) {
       <div className={styles.header}></div>
 
       <center>
-        <h1>Collaborate in Crowdsourced Truth Finding</h1><br />
+        <h1>Collaborate in Crowdsourced Truth Seeking</h1><br />
         <p className={styles.underheaderDescriptionp}>
           There’s too much bad information to sort through and it’s easy to
           get caught in information bubbles. Join with a community of curious truth-seekers to

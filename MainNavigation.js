@@ -23,6 +23,9 @@ export default function MainNavigation() {
         <Link href="/">Home</Link>
         {!isLoading && (user ? (
             <>
+            <Link href="/get-started">
+              About
+            </Link>
             <Link href="/profile">
               Profile
             </Link>
