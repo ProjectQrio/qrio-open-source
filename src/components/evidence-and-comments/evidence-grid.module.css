@@ -51,6 +51,7 @@
   font-size: 16px;
   font-weight: 500;
   color: black;
+  line-height: 1.5;
 }
 
 .evidenceGrid {
@@ -77,6 +78,7 @@
 }
 
 .evidenceUrl {
+  font-family: 'Roboto', sans-serif;
   color: #252CFC;
   font-size: 14px;
   text-decoration: none;
@@ -86,4 +88,77 @@
 
 .evidenceUrl:hover {
   text-decoration: underline;
+}
+
+
+.toggleAndTextContainer {
+  display: flex;
+  align-items: center;
+}
+
+
+.toggleButton {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fffefe;
+  color: #bde529;
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: solid 1px #bde529;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+  background-color: #bde529;
+  color: #fffefe;
+}
+
+.toggleButton:active {
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.7); /* Inner shadow changes on click */
+  background-color: #004085;
+}
+
+.addCommentText {
+  /* Add your specific styling here */
+  font-size: 14px;
+  margin-left: 10px;
+  color: #555; 
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.commentFormContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-top: 10px;
+}
+
+.commentFormInput {
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px; /* Normal font size for the input */
+}
+
+.commentFormSubmitButton {
+  height: 30px;
+  padding: 0 10px; /* 10 points padding around the text */
+  color: white;
+  background-color: #787FFA;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.commentFormSubmitButton:hover {
+  background-color: #252CFC;
 }

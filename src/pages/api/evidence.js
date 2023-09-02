@@ -1,5 +1,5 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import { connectToDatabase } from './database'; 
+import { connectToDatabase } from './database';
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
@@ -8,47 +8,34 @@ export default async function handler(req, res) {
   const evidencesCollection = db.collection("evidences");
 
   try {
-    if (!session || !session.user) {
-      res
-        .status(401)
-        .json({
+    if (req.method === "POST") {
+      // Check for logged-in users before allowing to post evidence
+      if (!session || !session.user) {
+        res.status(401).json({
           message: "Please create an account or log in to submit evidence.",
         });
-      return;
-    }
+        return;
+      }
 
-    // Get the user from the session
-    const user = session.user;
-
-    // Continue to handle the request if the session exists
-    if (req.method === "POST") {
       const { sourceLink, position, summary, userId, claimId } = req.body;
-    
-      // Create the new evidence object using the data from the request and the user from the session
       const newEvidence = { sourceLink, position, summary, userId, claimId, timestamp: new Date() };
-    
-      // Insert the new evidence object into the collection
       const result = await evidencesCollection.insertOne(newEvidence);
-    
       res.status(200).json({ message: "Evidence added successfully!" });
-    }
-  
+    } 
     else if (req.method === "GET") {
+      // Allow all users to fetch evidence, no need to check for session
       const { claimId } = req.query;
-    
-      const commentsCollection = db.collection("comments"); // Assuming you have a 'comments' collection
-    
+      const commentsCollection = db.collection("comments");
       const evidence = await evidencesCollection.find({ claimId }).toArray();
-    
-      // Fetch comments for each evidence and attach them
+
       for (let i = 0; i < evidence.length; i++) {
         const evidenceComments = await commentsCollection.find({ evidenceId: evidence[i]._id.toString() }).toArray();
         evidence[i].comments = evidenceComments;
       }
-    
+
       res.status(200).json(evidence);
-    }
-     else {
+    } 
+    else {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }

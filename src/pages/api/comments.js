@@ -3,9 +3,7 @@ import { connectToDatabase } from "./database";
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
-
   const { db, client } = await connectToDatabase();
-
   const commentsCollection = db.collection("comments");
 
   try {

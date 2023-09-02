@@ -13,6 +13,11 @@ body {
 body {
   color: black;
   background: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
 }
 
 a {

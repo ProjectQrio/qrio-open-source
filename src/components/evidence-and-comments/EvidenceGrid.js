@@ -27,22 +27,39 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
         console.log(formattedSummary); // Use formattedSummary to log 
 
         return (
-            <div key={index} className={classes.evidenceCard}>
-                <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
-                    {evidenceItem.sourceLink}
-                </a>
-                {/* Use the formattedSummary here */}
-                <div dangerouslySetInnerHTML={{ __html: formattedSummary }}/>
-                <button onClick={() => toggleCommentForm(evidenceItem._id)}>+</button>
-                {showingCommentFormFor === evidenceItem._id && (
-                    <CommentsComponent
-                        comments={evidenceItem.comments}
-                        onCommentSubmit={(e, userId) => handleCommentSubmit(e, evidenceItem._id, userId, claimId)}
-                        claimId={claimId}
-                    />
-                )}
-            </div>
-        );
+          <div key={index} className={classes.evidenceCard}>
+              <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
+                  {evidenceItem.sourceLink}
+              </a>
+              <div className={classes.evidenceText} dangerouslySetInnerHTML={{ __html: formattedSummary }}/>
+      
+              {/* Display comments here */}
+              <CommentsComponent
+                  comments={evidenceItem.comments}
+                  claimId={claimId}
+              />
+      
+      <div className={classes.toggleAndTextContainer}>
+  <button className={classes.toggleButton} onClick={() => toggleCommentForm(evidenceItem._id)}>+</button>
+  <span className={classes.addCommentText}>Add a Comment</span>
+</div>
+
+      
+              {showingCommentFormFor === evidenceItem._id && user && (
+                  <form className={classes.commentFormContainer} onSubmit={(e) => handleCommentSubmit(e, evidenceItem._id, user.sub, claimId)}>
+                      <input className={classes.commentFormInput}
+                          type="text"
+                          name="comment"
+                          placeholder="Enter your comment here..."
+                          required
+                      />
+                      <button className={classes.commentFormSubmitButton} type="submit">Submit</button>
+                  </form>
+              )}
+          </div>
+      );
+      
+      
     })
 );
 

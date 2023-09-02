@@ -27,7 +27,7 @@
 .header {
   position: relative;
   width: 100%; /* Full width */
-  height: 550px; /* Set the height as you prefer */
+  height: 600px; /* Set the height as you prefer */
   background-image: url('/ProjectQrioHeaderImage.png'); /* Replace with your image path */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
