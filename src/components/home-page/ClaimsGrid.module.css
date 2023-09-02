@@ -25,8 +25,13 @@
 .claimTitle {
   text-align: center;
   margin-top: 10px; /* adjust this value as per your requirements */
+  text-decoration: none;
+  color: #232327;
+  font-size: 15.5px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.25;
 }
 
 .claimItem:hover .claimTitle {
-  color: #232327;
+  color: #252cfc;
 }

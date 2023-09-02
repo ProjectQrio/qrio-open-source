@@ -9,12 +9,12 @@
 
 .button {
   font-size: 16px;
-  padding: 12px 23px;
+  padding: 16px 30px;
   background-color: #BDE529;
   color: black;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  border-width: 0;
-  border-radius: 5px;
+  border-width: 0px;
+  border-radius: 6px;
  
 }
 
@@ -25,8 +25,9 @@
 }
 
 .header {
+  position: relative;
   width: 100%; /* Full width */
-  height: 200px; /* Set the height as you prefer */
+  height: 550px; /* Set the height as you prefer */
   background-image: url('/ProjectQrioHeaderImage.png'); /* Replace with your image path */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -35,31 +36,44 @@
   margin-bottom: 70px
 }
 
+.overlayContent {
+  position: absolute; /* This will make it overlay */
+  top: 0;  /* Align to the top of the parent */
+  left: 0;  /* Align to the left of the parent */
+  width: 50%;  /* Take 50% width of the parent */
+  height: 100%;  /* Take full height of the parent */
+  padding: 20px;  /* Some padding to keep content nice */
+  box-sizing: border-box;  /* So that padding doesn't affect the size */
+  /* Optional: make it semi-transparent so that some of the image is still visible */
+
+}
+
 .h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 38px;
   font-weight: 700;
-  color: black;
+  color: #FFFEFE;
   margin-bottom: 10px;
-  text-align: center;
-  margin-top: 20px;
+  margin-top: 35px;
+  margin-left: 10%;
 }
 
 .underheaderDescriptionp {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: black;
+  color: #FFFEFE;
   align-items: center;
-  margin-left: 420px;
-  margin-right: 420px;
+  margin: auto;
   margin-bottom: 35px;
+  margin-left: 10%;
+  text-align: justify;
 }
 
 
 .getStartedButton {
   height: 50px;
-  width: 13%; /* You may add this line to make the submit button also extend to the full width */
+  width: 18%; /* You may add this line to make the submit button also extend to the full width */
   color: white;
   background-color: #787FFA;
   border: none;
@@ -67,7 +81,8 @@
   border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
+  margin-left: 10%;
 }
 
 .getStartedButton:hover {

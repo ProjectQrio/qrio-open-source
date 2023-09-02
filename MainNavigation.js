@@ -21,6 +21,9 @@ export default function MainNavigation() {
       </div>
       <div className={classes.linkscontainer}>
         <Link href="/">Home</Link>
+        <Link href="https://bit.ly/suggest-claim">
+              Suggest a Claim
+            </Link>
         <Link href="/get-started">
               About
             </Link>

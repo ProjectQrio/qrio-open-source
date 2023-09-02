@@ -22,13 +22,18 @@
     font-size: 20px;
     font-weight: 600;
     color: black;
-    transition: transform 0.3s, color 0.3s ease;
-  }
+    text-decoration: none;  /* Remove underline */
+    transition: transform 0.3s, color 0.3s ease, background-color 0.3s ease; /* Add background-color to transition */
+    padding: 14px; /* Add padding around text to create the "button" area */
+    border-radius: 8px; /* Round corners slightly */
+}
+
+.header a:hover {
+
+    background-color: rgba(189, 229, 41, 0.15); /* Add background color on hover (#BDE529 with 50% transparency) */
   
-  .header a:hover {
-    color: #252CFC;
-    transform: scale(1.1);
-  }
+}
+
   
   .logo {
     flex-grow: 1;

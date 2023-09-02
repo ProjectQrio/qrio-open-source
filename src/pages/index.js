@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react';
 import { connectToDatabase } from './api/database';
 import EvidenceTicker from "@/components/home-page/EvidenceTicker.js";
 import Footer from "@/components/Footer.js";
-import Link from "next/link";
 
 export default function HomePage({ claims }) {
   const hasCalledAPI = useRef(false);
@@ -49,17 +48,18 @@ export default function HomePage({ claims }) {
 
       <MainNavigation />
 
-      <div className={styles.header}></div>
+      <div className={styles.header}>
 
-      <center>
+      <div className={styles.overlayContent}>
         <h1 className={styles.h1}>Collaborate in Crowdsourced Truth Seeking</h1><br />
         <p className={styles.underheaderDescriptionp}>
           Today we have access to more information than at any other time in history.
           <br></br><br></br>
-          The downside is that there’s so much misinformation, disinformation, and propaganda to sort through and it’s easy to
-          get caught in information bubbles. 
+          But it’s easy to get overwhelmed or caught in information bubbles. 
           <br></br><br></br>
-          Join with a community of curious truth-seekers to
+          That's where Qrio comes in.
+          <br></br><br></br>
+          Join our community of curious truth-seekers to
           gather the best information to address your most pressing questions
           about current events and more.
           <br /> <br />
@@ -70,6 +70,9 @@ export default function HomePage({ claims }) {
     onClick={() => window.location.href='/get-started'}>
   Get Started
 </button>
+      </div>
+      </div>
+<center>
         <h2>Latest Evidence</h2>
         <EvidenceTicker></EvidenceTicker>
 <h2>Claims Under Investigation</h2>

@@ -12,9 +12,9 @@ function ClaimsGrid({ claims }) {
     <div className={styles.claimsGrid}>
       {claims.map((claim) => (
         <div key={claim.id} className={styles.claimItem}>
-          <Link href={`/claims-investigation/${claim.id}`}>
+          <Link className={styles.claimTitle} href={`/claims-investigation/${claim.id}`}>
               <img className={styles.claimImage} src={claim.image} alt={claim.title} />
-              <h2 className={styles.claimTitle}>{claim.title}</h2>
+              <h2>{claim.title}</h2>
           </Link>
         </div>
       ))}
