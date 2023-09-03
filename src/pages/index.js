@@ -53,7 +53,7 @@ export default function HomePage({ claims }) {
       <div className={styles.overlayContent}>
         <h1 className={styles.h1}>Collaborate in Crowdsourced Truth Seeking</h1><br />
         <p className={styles.underheaderDescriptionp}>
-          Today we have access to more information than at any other time in history.
+          Today we have access to more information than at any other time in history,
           <br></br><br></br>
           But it’s easy to get overwhelmed or caught in information bubbles. 
           <br></br><br></br>

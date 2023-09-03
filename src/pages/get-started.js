@@ -39,6 +39,8 @@ Project Qrio is meant to provide simple, decentralized systems for people to wor
             Comments should be directly related to the evidence you're commenting on. For example, if you have reason to believe the source is not credible or is missing some context, you can explain why.
             <br></br><br></br>
             Please stick to submitting evidence that is relevant to the claim, and please be respectful in your comments. For now, I will be manually moderating.
+            <br></br><br></br>
+            <Link href="/api/auth/login">Login</Link> with your Google account to get started.
             </p>
 
           <h3 className={styles.h3}>The Purpose of Project Qrio</h3>
