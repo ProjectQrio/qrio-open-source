@@ -28,7 +28,7 @@
     border-radius: 8px; /* Round corners slightly */
 }
 
-.header a:hover {
+.linkscontainer a:hover {
 
     background-color: rgba(189, 229, 41, 0.15); /* Add background color on hover (#BDE529 with 50% transparency) */
   
