@@ -28,12 +28,17 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
 
         return (
           <div key={index} className={classes.evidenceCard}>
+              {user && evidenceItem.userId === user.sub && (
+          <div className={classes.actionIcons}>
+      
+            <span className={classes.deleteIcon} onClick={() => handleDeleteEvidence(evidenceItem._id)}>☒</span>
+          </div>
+        )}
               <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
                   {evidenceItem.sourceLink}
               </a>
               <div className={classes.evidenceText} dangerouslySetInnerHTML={{ __html: formattedSummary }}/>
-      
-              {/* Display comments here */}
+        
               <CommentsComponent
                   comments={evidenceItem.comments}
                   claimId={claimId}
@@ -90,16 +95,32 @@ const handleCommentSubmit = async (event, evidenceId, userId, claimId) => {
     }
   };
 
-  return (
-    <div className={classes.evidenceGrid}>
-      <div className={classes.evidenceColumn}>
-        <h2 className={classes.header}>For</h2>
+  const handleDeleteEvidence = async (evidenceId) => {
+    const response = await fetch('/api/evidence', {
+      method: 'DELETE',
+      body: JSON.stringify({ evidenceId }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+  
+    if (response.ok) {
+      refetchEvidence();
+    }
+    // Handle errors as needed.
+  };
+  
+  
+
+      return (
+      
+          <div className={classes.evidenceGrid}>
+            <div className={classes.evidenceColumn}>
+              <h2 className={classes.header}>For</h2>
         {renderEvidenceColumn(evidence.filter((e) => e.position === "for"))}
-      </div>
-      <div className={classes.evidenceColumn}>
-        <h2 className={classes.header}>Against</h2>
+            </div>
+            <div className={classes.evidenceColumn}>
+              <h2 className={classes.header}>Against</h2>
         {renderEvidenceColumn(evidence.filter((e) => e.position === "against"))}
-      </div>
-    </div>
-  );
-}
+            </div>
+          </div>
+      );      
+    }

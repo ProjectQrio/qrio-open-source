@@ -1,29 +1,34 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { connectToDatabase } from './database';
+import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
-
   const { client, db } = await connectToDatabase();
   const evidencesCollection = db.collection("evidences");
 
   try {
-    if (req.method === "POST") {
-      // Check for logged-in users before allowing to post evidence
-      if (!session || !session.user) {
-        res.status(401).json({
-          message: "Please create an account or log in to submit evidence.",
-        });
-        return;
-      }
+    if (!session || !session.user) {
+      res.status(401).json({ message: "Unauthorized." });
+      return;
+    }
 
+    if (req.method === "POST") {
       const { sourceLink, position, summary, userId, claimId } = req.body;
       const newEvidence = { sourceLink, position, summary, userId, claimId, timestamp: new Date() };
       const result = await evidencesCollection.insertOne(newEvidence);
       res.status(200).json({ message: "Evidence added successfully!" });
+    } else if (req.method === "DELETE") {
+      const { evidenceId } = req.body;
+      const evidenceItem = await evidencesCollection.findOne({ _id: new ObjectId(evidenceId) });
+      if (evidenceItem.userId !== session.user.sub) {
+        res.status(403).json({ message: "Unauthorized." });
+        return;
+      }
+      await evidencesCollection.deleteOne({ _id: new ObjectId(evidenceId) });
+      res.status(200).json({ message: "Evidence deleted successfully!" });
     } 
-    else if (req.method === "GET") {
-      // Allow all users to fetch evidence, no need to check for session
+     else if (req.method === "GET") {
       const { claimId } = req.query;
       const commentsCollection = db.collection("comments");
       const evidence = await evidencesCollection.find({ claimId }).toArray();
@@ -34,9 +39,8 @@ export default async function handler(req, res) {
       }
 
       res.status(200).json(evidence);
-    } 
-    else {
-      res.setHeader("Allow", ["POST", "GET"]);
+    } else {
+      res.setHeader("Allow", ["POST", "GET", "DELETE"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
   } finally {
