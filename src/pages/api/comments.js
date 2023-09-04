@@ -1,5 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { connectToDatabase } from "./database"; 
+import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
@@ -29,7 +30,32 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json({ message: "Comment added successfully!" });
-    } else {
+    } 
+    else if (req.method === "DELETE") {
+      const { commentId } = req.body;  // Get commentId from request body.
+      
+      if (!session || !session.user) {
+        res.status(401).json({ message: "Please log in to delete a comment." });
+        return;
+      }
+      
+      const comment = await commentsCollection.findOne({ _id: new ObjectId(commentId) });
+      if (!comment) {
+        res.status(404).json({ message: "Comment not found." });
+        return;
+      }
+      
+      if (comment.userId !== session.user.sub) {
+        res.status(403).json({ message: "You do not have permission to delete this comment." });
+        return;
+      }
+      
+      await commentsCollection.deleteOne({ _id: new ObjectId(commentId) });
+      res.status(200).json({ message: "Comment deleted successfully!" });
+    }
+    
+    
+    else {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }

@@ -8,17 +8,23 @@ export default async function handler(req, res) {
   const evidencesCollection = db.collection("evidences");
 
   try {
-    if (!session || !session.user) {
-      res.status(401).json({ message: "Unauthorized." });
-      return;
-    }
-
     if (req.method === "POST") {
+      if (!session || !session.user) {
+        res.status(401).json({ message: "Unauthorized." });
+        return;
+      }
+
       const { sourceLink, position, summary, userId, claimId } = req.body;
       const newEvidence = { sourceLink, position, summary, userId, claimId, timestamp: new Date() };
       const result = await evidencesCollection.insertOne(newEvidence);
       res.status(200).json({ message: "Evidence added successfully!" });
+
     } else if (req.method === "DELETE") {
+      if (!session || !session.user) {
+        res.status(401).json({ message: "Unauthorized." });
+        return;
+      }
+
       const { evidenceId } = req.body;
       const evidenceItem = await evidencesCollection.findOne({ _id: new ObjectId(evidenceId) });
       if (evidenceItem.userId !== session.user.sub) {
@@ -27,8 +33,8 @@ export default async function handler(req, res) {
       }
       await evidencesCollection.deleteOne({ _id: new ObjectId(evidenceId) });
       res.status(200).json({ message: "Evidence deleted successfully!" });
-    } 
-     else if (req.method === "GET") {
+
+    } else if (req.method === "GET") {
       const { claimId } = req.query;
       const commentsCollection = db.collection("comments");
       const evidence = await evidencesCollection.find({ claimId }).toArray();
@@ -39,6 +45,7 @@ export default async function handler(req, res) {
       }
 
       res.status(200).json(evidence);
+
     } else {
       res.setHeader("Allow", ["POST", "GET", "DELETE"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });

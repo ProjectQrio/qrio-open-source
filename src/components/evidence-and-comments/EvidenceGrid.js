@@ -31,7 +31,7 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
               {user && evidenceItem.userId === user.sub && (
           <div className={classes.actionIcons}>
       
-            <span className={classes.deleteIcon} onClick={() => handleDeleteEvidence(evidenceItem._id)}>☒</span>
+            <span className={classes.deleteIcon} onClick={() => handleDeleteEvidence(evidenceItem._id)}>✕</span>
           </div>
         )}
               <a href={evidenceItem.sourceLink} target="_blank" rel="noopener noreferrer" className={classes.evidenceUrl}>
@@ -40,13 +40,16 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
               <div className={classes.evidenceText} dangerouslySetInnerHTML={{ __html: formattedSummary }}/>
         
               <CommentsComponent
-                  comments={evidenceItem.comments}
-                  claimId={claimId}
-              />
+  comments={evidenceItem.comments}
+  claimId={claimId}
+  user={user}
+  onDeleteComment={handleDeleteComment}
+/>
+
       
       <div className={classes.toggleAndTextContainer}>
   <button className={classes.toggleButton} onClick={() => toggleCommentForm(evidenceItem._id)}>+</button>
-  <span className={classes.addCommentText}>Add a Comment</span>
+  <span className={classes.addCommentText} onClick={() => toggleCommentForm(evidenceItem._id)}>Add a Comment</span>
 </div>
 
       
@@ -107,6 +110,21 @@ const handleCommentSubmit = async (event, evidenceId, userId, claimId) => {
     }
     // Handle errors as needed.
   };
+  
+  const handleDeleteComment = async (commentId) => {
+    console.log("Trying to delete comment:", commentId);
+    const response = await fetch('/api/comments', {
+      method: 'DELETE',
+      body: JSON.stringify({ commentId }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    
+    if (response.ok) {
+      refetchEvidence();
+    }
+    // Handle errors as needed.
+  };
+  
   
   
 
