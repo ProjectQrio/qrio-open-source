@@ -1,5 +1,5 @@
 import classes from "./evidence-grid.module.css";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import CommentsComponent from "./CommentsComponent";
 import { useUser } from '@auth0/nextjs-auth0/client';
 
@@ -7,19 +7,35 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
   const { user, error, isLoading } = useUser();
   const [showingCommentFormFor, setShowingCommentFormFor] = useState(null);
   const [comments, setComments] = useState([]); // Add comments state
+  const [commentValue, setCommentValue] = useState('');
+  const commentTextareaRef = useRef(null); 
 
-  const toggleCommentForm = (evidenceId) => {
-    if (!user) {
-      alert('Please log in to submit a comment.');
-      return;
+  const resizeTextarea = (e) => {
+    e.target.style.height = 'auto'; // Reset the height
+    e.target.style.height = e.target.scrollHeight + 'px'; // Set it to the scrollHeight
+};
+
+const toggleCommentForm = (evidenceId) => {
+  if (!user) {
+    alert('Please log in to submit a comment.');
+    return;
+  }
+
+  if (showingCommentFormFor === evidenceId) {
+    setShowingCommentFormFor(null);
+    setCommentValue(''); // Clear the comment value when closing
+    if (commentTextareaRef.current) {
+      commentTextareaRef.current.style.height = '30px'; // Reset textarea height
     }
-  
-    if (showingCommentFormFor === evidenceId) {
-      setShowingCommentFormFor(null);
-    } else {
-      setShowingCommentFormFor(evidenceId);
-    }
-  };
+  } else {
+    setShowingCommentFormFor(evidenceId);
+    setTimeout(() => {
+      if (commentTextareaRef.current) {
+        commentTextareaRef.current.focus(); // Focus on the textarea when opened
+      }
+    }, 0);
+  }
+};
 
   const renderEvidenceColumn = (evidenceItems) => (
     evidenceItems.map((evidenceItem, index) => {
@@ -53,20 +69,23 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
 </div>
 
       
-              {showingCommentFormFor === evidenceItem._id && user && (
+{showingCommentFormFor === evidenceItem._id && user && (
                   <form className={classes.commentFormContainer} onSubmit={(e) => handleCommentSubmit(e, evidenceItem._id, user.sub, claimId)}>
-                      <input className={classes.commentFormInput}
-                          type="text"
-                          name="comment"
-                          placeholder="Enter your comment here..."
-                          required
-                      />
+   <textarea
+     ref={commentTextareaRef} 
+    className={classes.commentFormInput}
+    name="comment"
+    value={commentValue}
+    onChange={(e) => setCommentValue(e.target.value)}
+    onInput={resizeTextarea}
+    required
+/>
                       <button className={classes.commentFormSubmitButton} type="submit">Submit</button>
                   </form>
               )}
           </div>
       );
-      
+    
       
     })
 );
@@ -87,16 +106,21 @@ const handleCommentSubmit = async (event, evidenceId, userId, claimId) => {
 
     // Add error handling as needed...
 
-    // If the comment was successfully added, refetch the evidence
     if (response.ok) {
       refetchEvidence();
+      setCommentValue('');
 
       // Fetch the updated comments for the specific claim ID
-      const commentsResponse = await fetch(`/api/comments/${claimId}`);
+      const commentsResponse = await fetch(`/api/comments/`);
       const commentsData = await commentsResponse.json();
       setComments(commentsData.comments);
+
+      if (commentTextareaRef.current) {
+        commentTextareaRef.current.style.height = '30px';
+      }
+   
     }
-  };
+};
 
   const handleDeleteEvidence = async (evidenceId) => {
     const response = await fetch('/api/evidence', {

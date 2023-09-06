@@ -143,14 +143,17 @@
 .commentFormInput {
   width: 100%;
   height: 30px;
-  padding: 0 10px;
+  padding: 6px; /* 10 points padding around the text */
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px; /* Normal font size for the input */
+  resize: none;  /* Disables the default resize handle in the bottom-right corner */
+  overflow-y: hidden;  /* Hides vertical scrollbar */
+  font-family: 'Roboto', sans-serif;
 }
 
 .commentFormSubmitButton {
-  height: 30px;
+  height: 40px;
   padding: 0 10px; /* 10 points padding around the text */
   color: white;
   background-color: #787FFA;
