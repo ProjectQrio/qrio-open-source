@@ -30,11 +30,11 @@ export default function EvidenceTicker() {
           <p>
             <span className={styles.userName}>{evidence.name}</span>:
             <span className={styles.evidenceSummary}>
-              {evidence.summary ? evidence.summary.slice(0, 150) : ""}
-              {evidence.summary && evidence.summary.length > 150 && "..."}
+              {evidence.summary ? evidence.summary.slice(0, 75) : ""}
+              {evidence.summary && evidence.summary.length > 75 && "..."}
             </span>
           </p>
-          <a href={`/claims-investigation/${evidence.claimId}`}>See Claim</a>
+          <a className={styles.seeEvidenceClaimLink} href={`/claims-investigation/${evidence.claimId}`}>See Claim</a>
         </div>
       ))}
     </div>

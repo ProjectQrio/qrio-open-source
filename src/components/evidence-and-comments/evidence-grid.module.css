@@ -1,22 +1,11 @@
 
 
-.evidenceGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  margin: 0 auto; /* Margin auto on the left and right will center the grid */
-  padding: 0px; /* Remove horizontal padding to not affect the centering */
-  border: 2px solid black;
-  width: 70%; /* You might want to restrict the width of the grid */
-  gap: 1px; /* This creates space between cells */
-}
-
 .evidenceHeader {
   text-align: center;
-  background-color: white; /* This will cover the grid's background color */
   padding: 20px
 
 }
+
 
 .evidenceBox {
     background-color: white;
@@ -57,12 +46,31 @@
 .evidenceGrid {
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
+  padding: 0;
+  width: 80%; 
+  gap: 1px; 
 }
 
 .evidenceColumn {
   flex: 1;
-  margin: 1em;
+  margin: 0; /* Remove margin here */
+  padding: 1em; /* You can adjust padding to give inner space */
 }
+
+.evidenceColumn:nth-child(1) {
+  background-color: rgba(120, 127, 250, 0.6); 
+  border-radius: 13px; /* This rounds the corners */
+
+}
+
+.evidenceColumn:nth-child(2) {
+  background-color: rgba(189, 229, 41, 0.6); 
+  border-radius: 13px; /* This rounds the corners */
+
+}
+
+
 
 .evidenceCard {
   border: 1px solid black;
@@ -75,6 +83,7 @@
 .header {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  font-size: 35px;
 }
 
 .evidenceUrl {

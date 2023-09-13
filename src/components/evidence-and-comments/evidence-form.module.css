@@ -35,18 +35,22 @@
 }
 
 .contactForm button[type='submit'] {
-  height: 40px;
+
   width: 100%; /* You may add this line to make the submit button also extend to the full width */
   color: white;
-  background-color: #787FFA;
-  border: none;
+  background-color: #252CFC;
+  border: 3px solid #252CFC;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font: 20px 'Roboto', sans-serif;
+  font-weight: 600;
+  padding: 13px;
 }
 
 .contactForm button[type='submit']:hover {
-  background-color: #252CFC;
+  background-color: #ffffff;
+  color: #030303;
 }
 
 .errorMessage {
@@ -62,7 +66,7 @@
 .formTitle {
   font-size: 24px;
   text-align: center;
-  color: #787FFA;
+  color: #252CFC;
 }
 
 .editorContainer {

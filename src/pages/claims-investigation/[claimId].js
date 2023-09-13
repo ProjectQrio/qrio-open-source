@@ -9,6 +9,7 @@ import Footer from '../../components/Footer'
 
 async function fetchEvidence(claimId) {
   const res = await fetch(`/api/evidence?claimId=${claimId}`);
+ 
 
   if (!res.ok) {
     console.error(`Error fetching evidence: ${res.status} ${res.statusText}`);
@@ -52,6 +53,12 @@ export async function getStaticPaths() {
 export default function ClaimPage({ claim }) {
   const [evidence, setEvidence] = useState([]);
   const [comments, setComments] = useState({});
+  const [showDescription, setShowDescription] = useState(false);
+
+const toggleDescription = () => {
+  setShowDescription(prevState => !prevState);
+};
+
 
   useEffect(() => {
     fetchEvidence(claim._id).then(evidenceData => {
@@ -72,8 +79,10 @@ export default function ClaimPage({ claim }) {
       <MainNavigation></MainNavigation>
       <img className={classes.claimImage} src={claim.image} alt={claim.title} />
       <h1 className={classes.claimtitle}>{claim.title}</h1>
-      <p className={classes.claimdescriptionp}>{claim.description}</p>
-      <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
+      <p className={classes.seeMore} onClick={toggleDescription} style={{cursor: 'pointer'}}>
+        See more explanation about claim
+      </p>
+      {showDescription && <p className={classes.claimdescriptionp}>{claim.description}</p>}      <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
       <Footer />
     </div>

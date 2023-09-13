@@ -9,7 +9,7 @@ export default function MainNavigation() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link href="/">
+        <Link href="/home">
           <img
             src="/qrioheaderlogo.png"
             alt="Your logo"
@@ -20,7 +20,7 @@ export default function MainNavigation() {
         </Link>
       </div>
       <div className={classes.linkscontainer}>
-        <Link href="/">Home</Link>
+        <Link href="/home">Home</Link>
         <Link href="https://bit.ly/suggest-claim">
               Suggest a Claim
             </Link>

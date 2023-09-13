@@ -1,194 +1,25 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  min-height: 100vh;
-}
-
-
-.button {
-  font-size: 16px;
-  padding: 16px 30px;
-  background-color: #BDE529;
-  color: black;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  border-width: 0px;
-  border-radius: 6px;
- 
-}
-
-.button:hover {
-  background-color: #252CFC;
-  color: white;
-  transform: scale(1.1); /* Make the button grow a bit */
-}
-
-.header {
-  position: relative;
-  width: 100%; /* Full width */
-  height: 600px; /* Set the height as you prefer */
-  background-image: url('/ProjectQrioHeaderImage.png'); /* Replace with your image path */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container, 
-                              this may cause the image to be cropped */
-  margin-bottom: 70px
-}
-
-.overlayContent {
-  position: absolute; /* This will make it overlay */
-  top: 0;  /* Align to the top of the parent */
-  left: 0;  /* Align to the left of the parent */
-  width: 50%;  /* Take 50% width of the parent */
-  height: 100%;  /* Take full height of the parent */
-  padding: 20px;  /* Some padding to keep content nice */
-  box-sizing: border-box;  /* So that padding doesn't affect the size */
-  /* Optional: make it semi-transparent so that some of the image is still visible */
-
-}
-
-.h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 38px;
-  font-weight: 700;
-  color: #FFFEFE;
-  margin-bottom: 10px;
-  margin-top: 35px;
-  margin-left: 10%;
-}
-
-.underheaderDescriptionp {
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #FFFEFE;
-  align-items: center;
-  margin: auto;
-  margin-bottom: 35px;
-  margin-left: 10%;
-  text-align: justify;
-}
-
-
-.getStartedButton {
-  height: 50px;
-  width: 18%; /* You may add this line to make the submit button also extend to the full width */
-  color: white;
-  background-color: #787FFA;
-  border: none;
-  font-size: 20px; 
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-  margin-left: 10%;
-}
-
-.getStartedButton:hover {
-  background-color: #252CFC;
-}
-
-
-/* Mobile */
-@media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
+.h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: #030303;
+    margin-bottom: 30px;
+    margin-top: 35px;
     text-align: center;
   }
 
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
+  .tickerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    margin: 0 auto; /* Margin auto on the left and right will center the grid */
+    padding: 0px; /* Remove horizontal padding to not affect the centering */
+    width: 88%; /* You might want to restrict the width of the grid */
+    gap: 1px; /* This creates space between cells */
+    column-gap: 25px; /* This creates space between columns */
 }
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
+  
+  .tickerColumn {
+    flex: 1;
+    margin: 1em;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}

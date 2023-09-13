@@ -7,7 +7,7 @@ export default async (req, res) => {
     const claimsCollection = db.collection('claims');
     const usersCollection = db.collection('users');
 
-    const latestEvidences = await evidencesCollection.find().sort({ _id: -1 }).limit(6).toArray();
+    const latestEvidences = await evidencesCollection.find().sort({ _id: -1 }).limit(8).toArray();
 
     const enrichedEvidences = await Promise.all(latestEvidences.map(async (evidence) => {
         const claim = await claimsCollection.findOne({ _id: new ObjectId(evidence.claimId) });  // Convert claimId string to ObjectId

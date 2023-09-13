@@ -1,0 +1,256 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+
+
+.button {
+  font-size: 16px;
+  padding: 16px 30px;
+  background-color: #BDE529;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border-width: 0px;
+  border-radius: 6px;
+ 
+}
+
+.button:hover {
+  background-color: #252CFC;
+  color: white;
+  transform: scale(1.1); /* Make the button grow a bit */
+}
+
+.header {
+  position: relative;
+  width: 100%; /* Full width */
+  height: 100vh; /* Set the height as you prefer */
+  background-image: url('/ProjectQrioHeaderImage.png'); /* Replace with your image path */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container, 
+                              this may cause the image to be cropped */
+  margin-bottom: 70px;
+}
+
+.header::before {
+    content: '';  /* Empty content for the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);  /* This creates a semi-transparent black overlay */
+    z-index: 1;  /* Ensures it's behind .overlayContent */
+  }
+
+
+.overlayContent {
+  position: relative;  /* This will make it overlay but sit on top of ::before */
+  z-index: 2;  /* Ensures it's above ::before */
+  width: 50%;  /* Take 50% width of the parent */
+  padding: 50px;  /* Some padding to keep content nice */
+  padding-top: 140px;
+  box-sizing: border-box;  /* So that padding doesn't affect the size */
+  /* Optional: make it semi-transparent so that some of the image is still visible */
+}
+
+.h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 55px;
+  font-weight: 700;
+  color: #FFFEFE;
+  margin-bottom: 50px;
+  margin-top: 35px;
+  margin-left: 10%;
+}
+
+.h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  font-weight: 700;
+  color: #030303;
+  margin-bottom: 30px;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.p {
+  font-family: 'Roboto', sans-serif; /* Added the font family to paragraph */
+  font-size: 17px;
+  margin-bottom: 20px; /* Space between paragraphs */
+  line-height: 1.6; /* Improved readability of text */
+  text-align: justify; /* Makes the text spread evenly */
+margin-left: 300px;
+margin-right: 300px;
+ 
+}
+
+.underheaderDescriptionp {
+  font-family: 'Roboto', sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FFFEFE;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 35px;
+  margin-left: 10%;
+  text-align: justify;
+}
+
+
+.howButton {
+  height: 50px;
+  width: 18%; /* You may add this line to make the submit button also extend to the full width */
+  color: white;
+  background-color: #787FFA;
+  border: none;
+  font-size: 20px; 
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 10%;
+}
+
+.loginButton {
+  height: 50px;
+  width: 18%; /* You may add this line to make the submit button also extend to the full width */
+  color: #030303;
+  background-color: #BDE529;
+  border: none;
+  font-size: 20px; 
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.howButton:hover {
+  background-color: #252CFC;
+}
+.loginButton:hover {
+  background-color: #252CFC;
+  color: white;
+}
+
+
+/* Mobile */
+@media (max-width: 700px) {
+  .content {
+    padding: 4rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 120px;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  .card {
+    padding: 1rem 2.5rem;
+  }
+
+  .card h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .center {
+    padding: 8rem 0 6rem;
+  }
+
+  .center::before {
+    transform: none;
+    height: 300px;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+
+  .description a {
+    padding: 1rem;
+  }
+
+  .description p,
+  .description div {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+  }
+
+  .description p {
+    align-items: center;
+    inset: 0 0 auto;
+    padding: 2rem 1rem 1.4rem;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--background-start-rgb), 1),
+      rgba(var(--callout-rgb), 0.5)
+    );
+    background-clip: padding-box;
+    backdrop-filter: blur(24px);
+  }
+
+  .description div {
+    align-items: flex-end;
+    pointer-events: none;
+    inset: auto 0 0;
+    padding: 2rem;
+    height: 200px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(var(--background-end-rgb)) 40%
+    );
+    z-index: 1;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .vercelLogo {
+    filter: invert(1);
+  }
+
+  .logo {
+    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

@@ -7,7 +7,7 @@
     margin-left: 350px;
     margin-right: 350px;
     text-align: center;
-    padding: 50px;
+    padding: 11px;
   }
   
   .claimtitle {
@@ -27,3 +27,14 @@
         object-fit: cover; /* This makes the image cover the entire dimensions of its box */
       }
       
+      .seeMore {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: black;
+        align-items: center;
+        margin-left: 350px;
+        margin-right: 350px;
+        text-align: center;
+        padding: 10px;
+      }
