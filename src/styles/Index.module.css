@@ -55,7 +55,7 @@
   z-index: 2;  /* Ensures it's above ::before */
   width: 50%;  /* Take 50% width of the parent */
   padding: 50px;  /* Some padding to keep content nice */
-  padding-top: 140px;
+  padding-top: 60px;
   box-sizing: border-box;  /* So that padding doesn't affect the size */
   /* Optional: make it semi-transparent so that some of the image is still visible */
 }
@@ -103,7 +103,7 @@ margin-right: 300px;
 
 .underheaderDescriptionp {
   font-family: 'Roboto', sans-serif;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 600;
   color: #FFFEFE;
   align-items: center;
