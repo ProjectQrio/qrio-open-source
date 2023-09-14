@@ -62,11 +62,11 @@
 
 .h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 55px;
+  font-size: 35px;
   font-weight: 700;
   color: #FFFEFE;
-  margin-bottom: 50px;
-  margin-top: 35px;
+  margin-bottom: 350px;
+  margin-top: 20px;
   margin-left: 10%;
 }
 
@@ -108,7 +108,7 @@ margin-right: 300px;
   color: #FFFEFE;
   align-items: center;
   margin: auto;
-  margin-bottom: 35px;
+  margin-bottom: 10px;
   margin-left: 10%;
   text-align: justify;
 }
@@ -125,7 +125,6 @@ margin-right: 300px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-bottom: 20px;
-  margin-top: 10px;
   margin-left: 10%;
 }
 
