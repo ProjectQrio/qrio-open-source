@@ -65,7 +65,7 @@
   font-size: 35px;
   font-weight: 700;
   color: #FFFEFE;
-  margin-bottom: 350px;
+  margin-bottom: 25px;
   margin-top: 20px;
   margin-left: 10%;
 }
@@ -103,7 +103,7 @@ margin-right: 300px;
 
 .underheaderDescriptionp {
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   color: #FFFEFE;
   align-items: center;
