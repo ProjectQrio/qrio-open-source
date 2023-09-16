@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import DemoEmbed from "@/components/DemoVideo";
+import Footer from "@/components/Footer.js";
 
 export default function Landing() {
   const { user, isLoading } = useUser();
@@ -58,25 +60,19 @@ export default function Landing() {
       </div>
       <div id="how-it-works-section">
         <h2 className={styles.h2}>How It Works</h2>
-        <h3 className={styles.h3}>This is a Prototype</h3>
-          <p className={styles.p}>Please note that this is a very early version of the final app I want to create. This version is only built for desktop viewing. I want to know if it is useful, and if it is easy to use, as well as what features you would like to see added.
+        <DemoEmbed></DemoEmbed>
+        <br></br>  <br></br>
+        <h3 className={styles.h2}>This is a Prototype</h3>
+          <p className={styles.p}>Please note that this is an early version of the final app I want to create. This version is only built for desktop viewing and has no built-in quality control features, so please use it as-intended. I'll be doing manual moderation if needed. I'm looking for feedback on if it is useful, if it is easy to use, and what features you would like to see added.
           <br></br><br></br>
           If you have any questions, feedback, ideas, or problems with the site, please don't hesitate to <a href="mailto:projectqrio@gmail.com" style={styles.link}>email me</a>.
           </p>
-
-          <h3 className={styles.h3}>How to Use This Website</h3>
-            <p className={styles.p}>The basic idea is that we are investigating specific topics (called 'claims') together. Each claim is a declarative statement, but don't assume the statement is true! Click on any claim on the homepage to see the page where the claim is being investigated. 
-            <br></br><br></br>
-            Each investigation page will have a title and a brief explanation of what is being investigated or why. There may already be evidence in the "For" or "Against" columns, or it may be blank. You can use the form at the bottom of each claim investigation page to add evidence "For" or "Against" each claim, and click on the "plus" sign to leave comments under evidence that other people have added. 
-            
-            <br></br><br></br>
-            Comments should be directly related to the evidence you're commenting on. For example, if you have reason to believe the source is not credible or is missing some context, you can explain why.
-            <br></br><br></br>
-            Please stick to submitting evidence that is relevant to the claim, and please be respectful in your comments. For now, I will be moderating manually.
-            <br></br><br></br>
+      </div><div>
+      <p className={styles.p}>
             <Link href="/api/auth/login">Login</Link> with your Google account to get started.
             </p>
 </div>
+<Footer />
 
     </>
   );
