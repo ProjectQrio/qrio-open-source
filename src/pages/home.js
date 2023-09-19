@@ -60,7 +60,7 @@ export async function getStaticProps() {
   const { client, db } = await connectToDatabase();
   const claimsCollection = db.collection("claims");
 
-  const claims = await claimsCollection.find().sort({ createdAt: -1 }).toArray();
+  const claims = await claimsCollection.find().sort({ timestamp: -1 }).toArray();
   client.close();
 
   return {
