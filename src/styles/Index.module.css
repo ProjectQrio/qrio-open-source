@@ -128,6 +128,7 @@ margin-right: 300px;
 }
 
 .loginButton {
+  vertical-align: top;
   height: 50px;
   width: 18%; /* You may add this line to make the submit button also extend to the full width */
   color: #030303;
