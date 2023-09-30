@@ -143,8 +143,8 @@ try {
             required
           >
             <option value="">Select...</option>
-            <option value="for">Prove</option>
-            <option value="against">Disprove</option>
+            <option value="for">Support</option>
+            <option value="against">Falsify</option>
           </select>
         </label>
 
