@@ -47,7 +47,7 @@ export default function Landing() {
             <p className={styles.underheaderDescriptionp}>
             Be Qrios. Question Everything.
           </p>
-          <div>
+          <div className={styles.buttonsDiv}>
             <button 
               className={styles.howButton} 
               onClick={() => scrollToSection('how-it-works-section')}>How it Works
@@ -65,7 +65,7 @@ export default function Landing() {
         <DemoEmbed></DemoEmbed>
         <br></br>  <br></br>
         <h3 className={styles.h2}>This is a Prototype</h3>
-          <p className={styles.p}>Please note that this is an early version of the final app I want to create. This version is only built for desktop viewing and has no built-in quality control features, so please use it as-intended. I'll be doing manual moderation if needed. I'm looking for feedback on if it is useful, if it is easy to use, and what features you would like to see added.
+          <p className={styles.p}>Please note that this is an early version of the final app I want to create. This version is only built for desktop viewing and has no built-in quality control features, so please use it as-intended. I'll be doing manual moderation if needed. That said, I really hope you'll use it! I'm looking for feedback on whether it is useful, if it is easy to use, and what features you would like to see added. It's important at this point to get users actively using it, so please don't hesitate to input evidence, leave comments, and share the site with friends who might be interested.
           <br></br><br></br>
           If you have any questions, feedback, ideas, or problems with the site, please don't hesitate to <a href="mailto:projectqrio@gmail.com" style={styles.link}>email me</a>.
           </p>

@@ -14,7 +14,7 @@ function DemoEmbed() {
                 <iframe 
                     src="https://www.loom.com/embed/742038f06f724ee1aeb2776b27be91bc?sid=a03762b8-6ced-4bb7-96e4-a2dc2b64d91d" 
                     frameBorder="0" 
-                    webkitallowfullscreen 
+                    webkitallowfullscreen="true" 
                     mozallowfullscreen 
                     allowFullScreen 
                     style={{ 
