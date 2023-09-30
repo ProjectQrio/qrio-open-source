@@ -47,15 +47,17 @@ export default function Landing() {
             <p className={styles.underheaderDescriptionp}>
             Be Qrios. Question Everything.
           </p>
-          <button 
-            className={styles.howButton} 
-            onClick={() => scrollToSection('how-it-works-section')}>How it Works
-          </button>
-          <button 
-            className={styles.loginButton} 
-            onClick={() => router.push('/api/auth/login')}>
-           Login
-          </button>
+          <div>
+            <button 
+              className={styles.howButton} 
+              onClick={() => scrollToSection('how-it-works-section')}>How it Works
+            </button>
+            <button 
+              className={styles.loginButton} 
+              onClick={() => router.push('/api/auth/login')}>
+             Login
+            </button>
+          </div>
         </div>
       </div>
       <div id="how-it-works-section">
