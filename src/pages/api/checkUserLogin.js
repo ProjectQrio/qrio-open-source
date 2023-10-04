@@ -1,9 +1,9 @@
-import { connectToDatabase } from './database';
+import clientPromise from './database';
 
 export default async function handler(req, res) {
     const { userId, userName } = req.body;  // Destructure userName from the request body.
-  
-    const { db } = await connectToDatabase();
+    const client = await clientPromise;
+    const db = client.db(process.env.MONGODB_DB);
     const collection = db.collection('users');
   
     const user = await collection.findOne({ auth0Id: userId });

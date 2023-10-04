@@ -4,7 +4,7 @@ import EvidenceGrid from '../../components/evidence-and-comments/EvidenceGrid';
 import EvidenceForm from '../../components/evidence-and-comments/EvidenceForm';
 import classes from './claimpage.module.css'
 import { useState, useEffect } from 'react';
-import { connectToDatabase } from '../api/database'; 
+import clientPromise from '../api/database';
 import Footer from '../../components/Footer'
 
 async function fetchEvidence(claimId) {
@@ -24,12 +24,11 @@ async function fetchEvidence(claimId) {
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const { client, db } = await connectToDatabase();
+  const client = await clientPromise;
+  const db = client.db(process.env.MONGODB_DB);
   const claimsCollection = db.collection('claims');
-
-  const claim = await claimsCollection.findOne({ _id: new ObjectId(params.claimId) });
-  client.close();
-
+  const claimId = new ObjectId(params.claimId).toString();
+  const claim = await claimsCollection.findOne({ _id: claimId });
   return {
     props: {
       claim: JSON.parse(JSON.stringify(claim)), 
@@ -38,11 +37,11 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const { client, db } = await connectToDatabase();
+  const client = await clientPromise;
+  const db = client.db(process.env.MONGODB_DB);
   const claimsCollection = db.collection('claims');
 
   const claims = await claimsCollection.find({}, { _id: 1 }).toArray();
-  client.close();
 
   return {
     paths: claims.map((claim) => ({ params: { claimId: claim._id.toString() } })),
@@ -73,7 +72,7 @@ const toggleDescription = () => {
       console.log(evidenceData);
     });
   };
-
+  
   return (
     <div>
       <MainNavigation></MainNavigation>

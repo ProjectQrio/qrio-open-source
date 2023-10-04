@@ -1,10 +1,12 @@
-import { connectToDatabase } from './database';
+import clientPromise from './database';
 
 export default async function handler(req, res) {
     try {
+        const client = await clientPromise;
+        const db = client.db(process.env.MONGODB_DB);
+
         const userId = req.body.userId; // Assuming you're passing userId in the body of the request
 
-        const { db } = await connectToDatabase();
         const usersCollection = db.collection('users');
 
         await usersCollection.updateOne(

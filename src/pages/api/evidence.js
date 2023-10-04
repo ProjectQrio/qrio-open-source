@@ -1,10 +1,11 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import { connectToDatabase } from './database';
+import clientPromise from './database';
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
   const session = await getSession(req, res);
-  const { client, db } = await connectToDatabase();
+  const client = await clientPromise;
+  const db = client.db(process.env.MONGODB_DB);
   const evidencesCollection = db.collection("evidences");
 
   try {
@@ -50,7 +51,7 @@ export default async function handler(req, res) {
       res.setHeader("Allow", ["POST", "GET", "DELETE"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
-  } finally {
-    client.close();
+  } catch(e){
+    console.warn(e);
   }
 }

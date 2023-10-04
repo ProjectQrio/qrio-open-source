@@ -1,8 +1,9 @@
-import { connectToDatabase } from './database';
+import clientPromise from './database';
 const { ObjectId } = require('mongodb');  // Import ObjectId
 
 export default async (req, res) => {
-    const { db } = await connectToDatabase();
+    const client = await clientPromise;
+    const db = client.db(process.env.MONGODB_DB);
     const commentsCollection = db.collection('comments');
     const claimsCollection = db.collection('claims');
     const usersCollection = db.collection('users');
