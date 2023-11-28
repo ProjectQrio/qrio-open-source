@@ -6,6 +6,7 @@ import classes from './claimpage.module.css'
 import { useState, useEffect } from 'react';
 import { connectToDatabase } from '../api/database'; 
 import Footer from '../../components/Footer'
+import PercentageSlider from '@/components/PercentageSlider';
 
 async function fetchEvidence(claimId) {
   const res = await fetch(`/api/evidence?claimId=${claimId}`);
@@ -82,7 +83,10 @@ const toggleDescription = () => {
       <p className={classes.seeMore} onClick={toggleDescription} style={{cursor: 'pointer'}}>
         See more explanation about claim
       </p>
-      {showDescription && <p className={classes.claimdescriptionp}>{claim.description}</p>}      <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
+      {showDescription && <p className={classes.claimdescriptionp}>{claim.description}</p>}   
+      <p className={classes.percentagesliderinstructions}>We can never be 100% sure if a claim is true or false. So likelihood of truth can be measured as a percentage. Use the slider to mark how likely you think it is that the claim is true or false. Feel free to adjust your probability as more evidence gets added and your views change over time.</p>  
+      <PercentageSlider claimId={claim._id} />
+      <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
       <Footer />
     </div>

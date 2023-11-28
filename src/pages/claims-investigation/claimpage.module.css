@@ -18,12 +18,12 @@
       text-align: center;
       margin-left: 330px;
       margin-right: 330px;
-      padding-top: 40px;
+      padding-top: 20px;
     }
 
     .claimImage {
         width: 100%;  /* This will make the image take the full width of its parent container */
-        height: 300px; /* This sets a fixed height for the image */
+        height: 280px; /* This sets a fixed height for the image */
         object-fit: cover; /* This makes the image cover the entire dimensions of its box */
       }
       
@@ -37,4 +37,16 @@
         margin-right: 350px;
         text-align: center;
         padding: 10px;
+      }
+
+      .percentagesliderinstructions {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: black;
+        align-items: center;
+        margin-left: 28%;
+        margin-right: 28%;
+        text-align: center;
+        padding-top: 10px;
       }
