@@ -1,11 +1,12 @@
 .sliderContainer {
+  position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     margin-top: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
   
   .sliderLabel {
@@ -15,36 +16,127 @@
   }
   
   .slider {
+    position: relative;
     -webkit-appearance: none;
     appearance: none;
-    width: 35%;
+    width: 100%;
     height: 15px;
     border-radius: 5px;
     background: linear-gradient(to right, #787FFA, #bde529);
     outline: none;
     transition: opacity .2s;
+    
+   
   }
   
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: #252CFC;
     cursor: pointer;
+    box-sizing: border-box; 
 }
   
 .slider::-moz-range-thumb {
     -moz-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: #252CFC;
     cursor: pointer;
+    box-sizing: border-box; 
 }
 
 .slidervalue {
     font-weight: bolder;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.sliderLabelSideA {
+  width: 40%;
+  text-align: left;
+}
+
+.sliderLabelSideB {
+  width: 40%;
+  text-align: right;
+}
+
+.averageMarker {
+  position: absolute;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid red;
+}
+
+.averageLabel {
+  position: absolute;
+  top: 10px;  /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 12px;  /* Adjust as needed */
+  width: 100px;  /* Adjust as needed */
+
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 35%;
+  display: flex;
+  flex-direction: column;  /* Add this line */
+  justify-content: center;
+}
+
+.averageSlider {
+  pointer-events: none;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  outline: none;
+  transition: opacity .2s;
+padding-top:5px;  
+}
+
+.averageSlider::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.averageSlider::-moz-range-track {
+  background: transparent;
+}
+
+.averageSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid red;
+  cursor: pointer;
+  box-sizing: border-box; 
+}
+
+.averageSlider::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid red;
+  cursor: pointer;
+  box-sizing: border-box; 
 }

@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   const { db, client } = await connectToDatabase();
   const commentsCollection = db.collection("comments");
 
-  try {
     if (req.method === 'GET') {
       const comments = await commentsCollection.find({}).toArray();
       res.status(200).json({ comments });
@@ -59,7 +58,4 @@ export default async function handler(req, res) {
       res.setHeader("Allow", ["POST", "GET"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
-  } finally {
-    client.close();
-  }
-}
+  }           

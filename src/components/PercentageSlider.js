@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import styles from './PercentageSlider.module.css';  // Add this line
+import React, { useState, useEffect, useRef } from 'react'; 
+import styles from './PercentageSlider.module.css';
 
 
 const PercentageSlider = ({ claimId }) => {
     const [sliderValue, setSliderValue] = useState(50);
     const [user, setUser] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);  // Add this line
+    const [isLoading, setIsLoading] = useState(true);  
+    const [average, setAverage] = useState(50);
+    const sliderWrapperRef = useRef(null);  
+    const [triangleWidthPercentage, setTriangleWidthPercentage] = useState(0);  // Define triangleWidthPercentage
+
+
+
+    useEffect(() => {
+        fetch(`/api/get-average-slider-value?claimId=${claimId}`)
+            .then(response => response.json())
+            .then(data => setAverage(data.average))
+            .catch(console.error);
+    }, [claimId]);
 
     useEffect(() => {
         console.log('Effect called');
@@ -32,7 +44,7 @@ const PercentageSlider = ({ claimId }) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Data:', data);
-                setSliderValue(data.value || 0);
+                setSliderValue(data.value || 50);
                 setIsLoading(false);  // Add this line
             })
             .catch(error => {
@@ -41,6 +53,28 @@ const PercentageSlider = ({ claimId }) => {
             });
         }
     }, [user, claimId]);
+
+    useEffect(() => {
+        const updateTriangleWidthPercentage = () => {
+            if (sliderWrapperRef.current) {
+                const parentContainerWidth = sliderWrapperRef.current.offsetWidth;
+                const triangleWidth = 20;  // The width of the triangle in pixels
+                const newTriangleWidthPercentage = (triangleWidth / parentContainerWidth) * 100;
+                setTriangleWidthPercentage(newTriangleWidthPercentage);
+            }
+        };
+
+        // Update the triangleWidthPercentage when the component mounts
+        updateTriangleWidthPercentage();
+
+        // Update the triangleWidthPercentage when the window is resized
+        window.addEventListener('resize', updateTriangleWidthPercentage);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', updateTriangleWidthPercentage);
+        };
+    }, [claimId]);
 
 
     const handleSliderChange = (event) => {
@@ -56,6 +90,13 @@ const PercentageSlider = ({ claimId }) => {
         });
     };
 
+    useEffect(() => {
+        fetch(`/api/get-average-slider-value?claimId=${claimId}`)
+            .then(response => response.json())
+            .then(data => setAverage(data.average))
+            .catch(console.error);
+    }, [sliderValue, claimId]);
+
     return (
         <div className={styles.sliderContainer}>
             {isLoading ? (
@@ -63,19 +104,33 @@ const PercentageSlider = ({ claimId }) => {
             ) : (
                 <>
                     <div className={styles.sliderLabel}>
-                        <span>100% Likelihood of being True</span>
+                        <div className={styles.sliderLabelSideA}>0% Likelihood of being True</div>
                         <span className={styles.slidervalue}>{sliderValue}%</span>
-                        <span>0% Likelihood of being True</span>
+                        <div className={styles.sliderLabelSideB}>100% Likelihood of being True</div>
                     </div>
-                    <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={sliderValue}
-                        onChange={handleSliderChange}
-                        onMouseUp={handleSliderChangeEnd}
-                        className={styles.slider}  // Add this line
-                    />
+                    <div className={styles.sliderWrapper} ref={sliderWrapperRef} style={{ position: 'relative' }}>
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={sliderValue}
+                            onChange={handleSliderChange}
+                            onMouseUp={handleSliderChangeEnd}
+                            className={styles.slider}
+                        />
+                    </div>
+                    {average !== null && (
+    <div className={styles.sliderWrapper} style={{ position: 'relative' }}>
+        <input
+            type="range"
+            min="0"
+            max="100"
+            value={average}
+            className={`${styles.averageSlider}`}
+            readOnly
+        />
+<div className={styles.averageLabel}><p>Average Response: {average}%</p></div>    </div>
+)}
                 </>
             )}
         </div>

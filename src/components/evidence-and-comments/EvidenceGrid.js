@@ -155,14 +155,14 @@ const handleCommentSubmit = async (event, evidenceId, userId, claimId) => {
   return (
     <div className={classes.evidenceGrid}>
         <div className={classes.evidenceColumn}>
-            <h2 className={classes.header}>Support</h2>
-            {renderEvidenceColumn(evidence.filter((e) => e.position === "for"))}
-        </div>
-        <div className={classes.evidenceColumn}>
             <h2 className={classes.header}>Falsify</h2>
             {renderEvidenceColumn(evidence.filter((e) => e.position === "against"))}
         </div>
+        <div className={classes.evidenceColumn}>
+            <h2 className={classes.header}>Support</h2>
+            {renderEvidenceColumn(evidence.filter((e) => e.position === "for"))}
+        </div>
     </div>
-);      
+);
    
     }

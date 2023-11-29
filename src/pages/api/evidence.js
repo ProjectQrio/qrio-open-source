@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   const { client, db } = await connectToDatabase();
   const evidencesCollection = db.collection("evidences");
 
-  try {
     if (req.method === "POST") {
       if (!session || !session.user) {
         res.status(401).json({ message: "Unauthorized." });
@@ -50,7 +49,4 @@ export default async function handler(req, res) {
       res.setHeader("Allow", ["POST", "GET", "DELETE"]);
       res.status(405).json({ message: `Method ${req.method} is not allowed` });
     }
-  } finally {
-    client.close();
   }
-}

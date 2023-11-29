@@ -29,7 +29,7 @@ export async function getStaticProps(context) {
   const claimsCollection = db.collection('claims');
 
   const claim = await claimsCollection.findOne({ _id: new ObjectId(params.claimId) });
-  client.close();
+
 
   return {
     props: {
@@ -43,7 +43,7 @@ export async function getStaticPaths() {
   const claimsCollection = db.collection('claims');
 
   const claims = await claimsCollection.find({}, { _id: 1 }).toArray();
-  client.close();
+
 
   return {
     paths: claims.map((claim) => ({ params: { claimId: claim._id.toString() } })),
