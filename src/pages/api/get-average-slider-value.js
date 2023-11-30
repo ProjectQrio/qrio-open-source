@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         const { db } = await connectToDatabase();
         const userDocuments = await db.collection('users').find({ [`claims.${claimId}`]: { $exists: true } }).toArray();
 
-        const values = userDocuments.map(user => user.claims[claimId].slice(-1)[0]);const average = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 50;
+        const values = userDocuments.map(user => typeof user.claims[claimId] === 'number' ? user.claims[claimId] : user.claims[claimId].slice(-1)[0]);
         return res.status(200).json({ average });
     } catch (error) {
         console.error('Error in get-average-slider-value:', error);
