@@ -15,7 +15,11 @@ const PercentageSlider = ({ claimId }) => {
     useEffect(() => {
         fetch(`/api/get-average-slider-value?claimId=${claimId}`)
             .then(response => response.json())
-            .then(data => setAverage(data.average))
+            .then(data => {
+                console.log('Average:', data.average); // Log the average
+                setAverage(data.average);
+                console.log('Updated average:', average);
+            })
             .catch(console.error);
     }, [claimId]);
 

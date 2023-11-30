@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import { connectToDatabase } from '../api/database'; 
 import Footer from '../../components/Footer'
 import PercentageSlider from '@/components/PercentageSlider';
+import { Tooltip, Button } from 'antd';
+
 
 async function fetchEvidence(claimId) {
   const res = await fetch(`/api/evidence?claimId=${claimId}`);
@@ -84,8 +86,14 @@ const toggleDescription = () => {
         See more explanation about claim
       </p>
       {showDescription && <p className={classes.claimdescriptionp}>{claim.description}</p>}   
-      <p className={classes.percentagesliderinstructions}>We can never be 100% sure if a claim is true or false. So likelihood of truth can be measured as a percentage. Use the slider to mark how likely you think it is that the claim is true or false. Feel free to adjust your probability as more evidence gets added and your views change over time.</p>  
+  
+      <Tooltip title="We can never be 100% sure if a claim is true or false. So the likelihood of truth can be measured as a percentage. Use the slider to mark how likely you think it is that the claim is true or false. Feel free to adjust your probability as more evidence gets added and your views change over time.">
+      <span className={classes.percentagesliderlabel}>Probability Slider</span>
+   
+      
+     
       <PercentageSlider claimId={claim._id} />
+      </Tooltip>
       <EvidenceGrid evidence={evidence} refetchEvidence={refetchEvidence} claimId={claim._id} />
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
       <Footer />
