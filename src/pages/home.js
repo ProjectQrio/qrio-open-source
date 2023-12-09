@@ -47,7 +47,7 @@ return (
                 <EvidenceTicker></EvidenceTicker>
                 <CommentsTicker></CommentsTicker>
                 </div>
-        <h2 className={styles.h2}>Discover</h2>
+        <h2 className={styles.h2}>Claims Under Investigation</h2>
         <ClaimsGrid claims={claims} />
         <br></br>
         <Footer />
