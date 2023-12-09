@@ -55,7 +55,7 @@ export default function Landing() {
             <button 
               className={styles.loginButton} 
               onClick={() => router.push('/api/auth/login')}>
-             Login
+             Go to Site
             </button>
           </div>
         </div>
