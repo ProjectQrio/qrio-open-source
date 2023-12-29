@@ -2,6 +2,7 @@ import MainNavigation from "../../MainNavigation.js";
 import Footer from "@/components/Footer.js";
 import styles from '@/styles/get-started.module.css';
 import Link from "next/link.js";
+import Head from 'next/head';
 
 
 
