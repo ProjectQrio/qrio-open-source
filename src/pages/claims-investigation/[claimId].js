@@ -7,7 +7,8 @@ import { useState, useEffect } from 'react';
 import { connectToDatabase } from '../api/database'; 
 import Footer from '../../components/Footer'
 import PercentageSlider from '@/components/PercentageSlider';
-import { Tooltip, Button } from 'antd';
+import { Tooltip } from 'antd';
+import Head from 'next/head';
 
 
 async function fetchEvidence(claimId) {
@@ -78,6 +79,13 @@ const toggleDescription = () => {
   };
 
   return (
+    <>
+    <Head>
+      <title>{claim.title}</title>
+      <meta property="og:title" content={claim.title} />
+      <meta property="og:description" content={claim.description} />
+      <meta property="og:image" content={claim.image} />
+    </Head>
     <div>
       <MainNavigation></MainNavigation>
       <img className={classes.claimImage} src={claim.image} alt={claim.title} />
@@ -98,5 +106,6 @@ const toggleDescription = () => {
       <EvidenceForm claimId={claim._id} onEvidenceSubmit={refetchEvidence}></EvidenceForm>
       <Footer />
     </div>
+    </>
   );
 }

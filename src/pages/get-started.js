@@ -7,6 +7,13 @@ import Link from "next/link.js";
 
 export default function GetStartedPage() {
     return (
+      <>
+      <Head>
+      <title>Project Qrio</title>
+      <meta property="og:title" content="Project Qrio" />
+      <meta property="og:description" content="Qrio is a web tool that facilitates collaborative research. The design incentivizes nuanced, critical thinking and aims to help users escape their information bubbles to consider new perspectives. Be Qrios. Question Everything." />
+      <meta property="og:image" content="ProjectQrioHeaderImage.png" />
+    </Head>
       <div>
         <MainNavigation />
   
@@ -67,6 +74,7 @@ Project Qrio is meant to provide simple, decentralized systems for people to wor
   </div>
         <Footer />
       </div>
+      </>
     );
   }
   
