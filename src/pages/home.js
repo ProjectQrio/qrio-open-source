@@ -41,15 +41,14 @@ return (
     <>
    <MainNavigation />
 <center>
-    <div className={styles.tickerGrid}>
+        <h2 className={styles.h2}>Claims Under Investigation</h2>
+        <ClaimsGrid claims={claims} />
+        <div className={styles.tickerGrid}>
     <h2 className={styles.h2}>Latest Evidence</h2>
                 <h2 className={styles.h2}>Latest Comments</h2>
                 <EvidenceTicker></EvidenceTicker>
                 <CommentsTicker></CommentsTicker>
                 </div>
-        <h2 className={styles.h2}>Claims Under Investigation</h2>
-        <ClaimsGrid claims={claims} />
-        <br></br>
         <Footer />
       </center>
     </>
