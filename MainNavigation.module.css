@@ -1,64 +1,86 @@
 
 
 .header {
-    display: flex;
-    padding: 10px;
-    margin: 50px 100px 15px;
-  }
-  
+  display: flex;
+  padding: 10px;
+  margin: 50px 100px 15px;
+}
 
-  .linkscontainer {
-    display: flex;
-    justify-content: flex-end;
-    flex-shrink: 1;
-  }
-  
-  .linkscontainer a {
-    margin-left: 60px;
-  }
-  
-  .header a {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-    text-decoration: none;  /* Remove underline */
-    transition: transform 0.3s, color 0.3s ease, background-color 0.3s ease; /* Add background-color to transition */
-    padding: 14px; /* Add padding around text to create the "button" area */
-    border-radius: 8px; /* Round corners slightly */
+.linkscontainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 1;
+}
+
+.linkscontainer a {
+  margin-left: 60px;
+}
+
+.header a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s ease, background-color 0.3s ease;
+  padding: 14px;
+  border-radius: 8px;
 }
 
 .linkscontainer a:hover {
-
-    background-color: rgba(189, 229, 41, 0.15); /* Add background color on hover (#BDE529 with 50% transparency) */
-  
+  background-color: rgba(189, 229, 41, 0.15);
 }
 
-  
-  .logo {
-    flex-grow: 1;
-  }
+.logo {
+  flex-grow: 1;
+}
 
-
-  .logoutbutton:hover {
-    color: #252CFC;
-    flex-grow: 1;
-    transform: scale(1.1);
-  }
-
+.logoutbutton:hover {
+  color: #252CFC;
+  flex-grow: 1;
+  transform: scale(1.1);
+}
 
 .logoutbutton {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-    padding: 0px 0px;
-    margin-left: 60px;
-    background-color: #bce52900;
-    color: black;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    border-width: 0px;
-    border-radius: 0px;
-    transition: transform 0.3s;
-    cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  padding: 0px 0px;
+  margin-left: 60px;
+  background-color: #bce52900;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border-width: 0px;
+  border-radius: 0px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #252CFC;
+  font-size: 2rem;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .linkscontainer {
+      display: none;
   }
+
+  .linkscontainer.open {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .hamburger {
+      display: block;
+  }
+}

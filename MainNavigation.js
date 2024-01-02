@@ -2,9 +2,11 @@ import React from 'react';
 import Link from "next/link";
 import classes from "./MainNavigation.module.css";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useState } from 'react';
 
 export default function MainNavigation() {
   const { user, isLoading } = useUser()
+  const [isOpen, setIsOpen] = useState(false);
   
   return (
     <header className={classes.header}>
@@ -19,7 +21,10 @@ export default function MainNavigation() {
           />
         </Link>
       </div>
-      <div className={classes.linkscontainer}>
+      <button onClick={() => setIsOpen(!isOpen)} className={classes.hamburger}>
+        ☰
+      </button>
+      <div className={`${classes.linkscontainer} ${isOpen ? classes.open : ''}`}>
         <Link href="/home">Home</Link>
         <Link href="https://bit.ly/suggest-claim">
               Suggest a Claim
