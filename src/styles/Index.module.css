@@ -159,8 +159,27 @@ margin-right: 300px;
 
 /* Mobile */
 @media (max-width: 700px) {
-  .content {
-    padding: 4rem;
+  .content, .card, .center {
+    padding: 1rem;
+  }
+  .p, .claimdescriptionp {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+
+  .h1, .h2, .h3 {
+    font-size: 1.5rem;
+  }
+
+  .overlayContent {
+    position: relative;  /* This will make it overlay but sit on top of ::before */
+    z-index: 2;  /* Ensures it's above ::before */
+    width: 88%;  /* Take 50% width of the parent */
+    padding: 10px;  /* Some padding to keep content nice */
+    padding-top: 30px;
+    box-sizing: border-box;  /* So that padding doesn't affect the size */
+    /* Optional: make it semi-transparent so that some of the image is still visible */
   }
 
   .grid {

@@ -6,6 +6,7 @@ import { connectToDatabase } from './api/database';
 import EvidenceTicker from "@/components/home-page/EvidenceTicker.js";
 import CommentsTicker from "@/components/home-page/CommentsTicker.js";
 import Footer from "@/components/Footer.js";
+import DemoEmbed from "@/components/DemoVideo.js";
 
 export default function Home({ claims }) {
   const hasCalledAPI = useRef(false);
@@ -41,6 +42,8 @@ return (
     <>
    <MainNavigation />
 <center>
+<h2 className={styles.h2}>Demo</h2>
+        <DemoEmbed></DemoEmbed>
         <h2 className={styles.h2}>Claims Under Investigation</h2>
         <ClaimsGrid claims={claims} />
         <div className={styles.tickerGrid}>
