@@ -1,11 +1,3 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 35px;
@@ -32,107 +24,6 @@
   margin: 1em;
 }
 
-.button {
-  font-size: 16px;
-  padding: 16px 30px;
-  background-color: #BDE529;
-  color: black;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  border-width: 0px;
-  border-radius: 6px;
- 
-}
-
-.button:hover {
-  background-color: #252CFC;
-  color: white;
-  transform: scale(1.1); /* Make the button grow a bit */
-}
-
-
-.h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 35px;
-  font-weight: 700;
-  color: #FFFEFE;
-  margin-bottom: 25px;
-  margin-top: 20px;
-  margin-left: 10%;
-}
-
-
-.h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 23px;
-  font-weight: 600;
-  color: black;
-  margin-bottom: 20px;
-  margin-top: 40px;
-  text-align: center;
-}
-
-.p {
-  font-family: 'Roboto', sans-serif; /* Added the font family to paragraph */
-  font-size: 17px;
-  margin-bottom: 20px; /* Space between paragraphs */
-  line-height: 1.6; /* Improved readability of text */
-  text-align: justify; /* Makes the text spread evenly */
-margin-left: 300px;
-margin-right: 300px;
- 
-}
-
-.underheaderDescriptionp {
-  font-family: 'Roboto', sans-serif;
-  font-size: 19px;
-  font-weight: 600;
-  color: #FFFEFE;
-  align-items: center;
-  margin: auto;
-  margin-bottom: 15px;
-  margin-left: 10%;
-  text-align: justify;
-}
-
-
-.howButton {
-  height: 50px;
-  width: 18%; /* You may add this line to make the submit button also extend to the full width */
-  color: white;
-  background-color: #787FFA;
-  border: none;
-  font-size: 17px;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-  margin-left: 10%;
-}
-
-.loginButton {
-  vertical-align: top;
-  height: 50px;
-  width: 18%; /* You may add this line to make the submit button also extend to the full width */
-  color: #030303;
-  background-color: #BDE529;
-  border: none;
-  font-size: 17px; 
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-  margin-left: 15px;
-}
-
-.howButton:hover {
-  background-color: #252CFC;
-}
-.loginButton:hover {
-  background-color: #252CFC;
-  color: white;
-}
 
 
 /* Mobile */
@@ -169,69 +60,6 @@ margin-right: 300px;
     max-width: 320px;
     text-align: center;
   }
-
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
 }
 
 /* Tablet and Smaller Desktop */
@@ -242,13 +70,7 @@ margin-right: 300px;
 }
 
 @media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
 
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
 }
 
 @keyframes rotate {
