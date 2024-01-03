@@ -58,8 +58,6 @@ return (
         <h2 className={styles.h2}>Demo</h2>
         <DemoEmbed></DemoEmbed><br></br><br></br>
         <div className={styles.tickerGrid}>
-    <h2 className={styles.h2}>Latest Evidence</h2>
-                <h2 className={styles.h2}>Latest Comments</h2>
                 <EvidenceTicker></EvidenceTicker>
                 <CommentsTicker></CommentsTicker>
                 </div>

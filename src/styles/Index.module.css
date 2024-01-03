@@ -206,6 +206,17 @@ margin-right: 300px;
     /* Optional: make it semi-transparent so that some of the image is still visible */
   }
 
+  .tickerGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    margin: 0 auto; /* Margin auto on the left and right will center the grid */
+    padding: 0px; /* Remove horizontal padding to not affect the centering */
+    width: 88%; /* You might want to restrict the width of the grid */
+    gap: 1px; /* This creates space between cells */
+    column-gap: 25px; /* This creates space between columns */
+  }
+
   .grid {
     grid-template-columns: 1fr;
     margin-bottom: 120px;

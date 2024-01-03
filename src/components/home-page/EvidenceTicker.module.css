@@ -17,6 +17,16 @@
     align-items: center;
 }
 
+.h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #030303;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
 .evidenceItem:last-child {
     border-bottom: none; /* To remove the bottom border from the last item */
 }

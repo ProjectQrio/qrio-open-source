@@ -25,6 +25,7 @@ export default function EvidenceTicker() {
 
   return (
     <div className={styles.tickerContainer}>
+          <h2 className={styles.h2}>Latest Evidence</h2>
       {evidences.map((evidence) => (
         <div key={evidence._id} className={styles.evidenceItem}>
           <p>

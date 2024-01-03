@@ -84,3 +84,9 @@
   text-decoration: none;
   padding-right: 5px;
 }
+
+@media (max-width: 700px) {
+  .claimsGrid {
+    grid-template-columns: 1fr;
+  }
+}

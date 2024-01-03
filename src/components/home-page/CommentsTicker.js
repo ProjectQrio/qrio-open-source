@@ -25,6 +25,7 @@ export default function CommentsTicker() {
 
   return (
     <div className={styles.commentsTickerContainer}>
+          <h2 className={styles.h2}>Latest Comments</h2>
       {comments.map((comment) => ( // Changed variable name for clarity
         <div key={comment._id} className={styles.commentsItem}>
           <p>
