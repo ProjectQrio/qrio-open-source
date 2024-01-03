@@ -50,3 +50,54 @@
         text-align: center;
         padding-top: 10px;
       }
+
+      @media (max-width: 700px) {
+
+        .claimdescriptionp {
+          font-family: 'Roboto', sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          color: black;
+          align-items: center;
+          margin-left: 10px;
+          margin-right: 10px;
+          text-align: center;
+          padding: 11px;
+        }
+        
+        .claimtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: black;
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding-top: 15px;
+          }
+
+          .seeMore {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: black;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            padding: 8px;
+          }
+    
+          .percentagesliderlabel {
+            font-family: 'Roboto', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: black;
+            display: flex; /* Add this */
+            justify-content: center; /* Add this */
+            align-items: center;
+            text-align: center;
+            padding-top: 10px;
+          }
+
+      }
