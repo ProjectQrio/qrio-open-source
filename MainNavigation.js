@@ -11,7 +11,7 @@ export default function MainNavigation() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link href="/home">
+        <Link href="/">
           <img
             src="/qrioheaderlogo.png"
             alt="Your logo"
@@ -25,7 +25,7 @@ export default function MainNavigation() {
         ☰
       </button>
       <div className={`${classes.linkscontainer} ${isOpen ? classes.open : ''}`}>
-        <Link href="/home">Home</Link>
+        <Link href="/">Home</Link>
         <Link href="https://bit.ly/suggest-claim">
               Suggest a Claim
             </Link>

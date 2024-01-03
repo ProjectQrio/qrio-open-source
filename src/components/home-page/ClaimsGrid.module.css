@@ -4,8 +4,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px; /* adjust this value as per your requirements */
   align-items: center;
-  padding-left: 15%;
-  padding-right: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .claimItem {

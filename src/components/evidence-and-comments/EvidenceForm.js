@@ -5,6 +5,7 @@ import "draft-js/dist/Draft.css";
 import { convertToRaw, EditorState, Editor } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import sanitizeHtml from "sanitize-html";
+import { Button } from 'antd';
 
 function EvidenceForm({ claimId, onEvidenceSubmit }) {
   const [sourceLink, setSourceLink] = useState("");
@@ -21,7 +22,7 @@ function EvidenceForm({ claimId, onEvidenceSubmit }) {
   }
 
   if (!user) {
-    return <p>Please create an account or log in to submit evidence.</p>;
+    return <Button href="/api/auth/login" className={classes.loginButton} type="primary">Please log in to submit evidence.</Button>;
   }
 
   const handleSubmit = async (e) => {
