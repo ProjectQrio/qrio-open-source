@@ -89,4 +89,13 @@
   .claimsGrid {
     grid-template-columns: 1fr;
   }
+
+  .claimTitle {
+    /* Adjust these properties as needed */
+    height: auto;
+    line-height: normal;
+    white-space: normal; /* Add this line to allow the text to wrap */
+    text-decoration: none;
+    font-size: 20px;
+  }
 }
