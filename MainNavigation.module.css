@@ -4,6 +4,7 @@
   display: flex;
   padding: 10px;
   margin: 50px 100px 15px;
+  position: relative;
 }
 
 .linkscontainer {
@@ -76,8 +77,11 @@
   }
 
   .linkscontainer.open {
+    position: absolute;
+    top: 100%; /* Position it right below the parent container */
+    left: 0; /* Align it to the left */
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
   }
 
   .hamburger {
