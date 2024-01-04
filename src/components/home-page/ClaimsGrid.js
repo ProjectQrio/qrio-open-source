@@ -34,13 +34,13 @@ function ClaimsGrid({ claims: initialClaims }) {
     
 
 <Card
-  id="myCard" /* Add an id */
   className={`${styles.claimCard} ${styles.claimCardHover} ${styles.claimCardShadow}`}
   hoverable
   style={{ width: '96%' }}
   cover={<img alt={claim.title} src={claim.image} className={styles.claimImage} />}
 >
-  <Card.Meta title={<span className={styles.claimTitle}>{claim.title}</span>} />
+  <Card.Meta/>
+  <div className={styles.claimTitle}>{claim.title}</div>
   <div className={styles.claimStats}>
     <div className={styles.claimStat}>
       <div className={styles.evidenceLabel}>Evidence</div>

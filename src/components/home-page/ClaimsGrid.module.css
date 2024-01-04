@@ -9,11 +9,6 @@
 }
 
 
-/* This targets the ant-card-meta class within the card with id myCard */
-#myCard .ant-card-meta {
-  display: block; /* Change flex to block */
-}
-
 .claimItem {
   flex-direction: column;
   align-items: center;
