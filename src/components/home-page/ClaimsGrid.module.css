@@ -9,7 +9,6 @@
 }
 
 .claimItem {
-  display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%; /* added to ensure the grid items have the same height */
