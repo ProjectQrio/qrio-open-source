@@ -77,7 +77,7 @@
 
   .linkscontainer.open {
     display: flex;
-    flex-direction: row-reverse; /* Change column to row-reverse */
+    flex-direction: row-reverse;
   }
 
   .hamburger {
