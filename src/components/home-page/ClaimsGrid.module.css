@@ -45,6 +45,7 @@
   white-space: normal; /* Add this line to allow the text to wrap */
   text-decoration: none;
   font-size: 20px;
+  text-align: center;
 }
 
 .claimLink {
@@ -97,6 +98,6 @@
     white-space: normal; /* Add this line to allow the text to wrap */
     text-decoration: none;
     font-size: 20px;
-    align-items: center;
+    text-align: center;
   }
 }
