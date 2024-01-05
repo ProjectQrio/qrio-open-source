@@ -76,12 +76,20 @@
       display: none;
   }
 
+  .linkscontainer a {
+    font-size: 16px; /* Reduce the font size on mobile */
+    margin: 0;
+    padding: 7px;
+  }
+
   .linkscontainer.open {
     position: absolute;
-    top: 100%; /* Position it right below the parent container */
-    left: 0; /* Align it to the left */
+    top: 100%; /* Adjust as needed */
+    right: 0; /* Align it to the right of the parent container */
     display: flex;
     flex-direction: column;
+    background-color: white; /* Add a white background */
+    z-index: 1000; /* Bring to the front */
   }
 
   .hamburger {
