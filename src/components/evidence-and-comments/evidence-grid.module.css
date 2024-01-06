@@ -57,6 +57,7 @@
   flex: 1;
   margin: 0; /* Remove margin here */
   padding: 1em; /* You can adjust padding to give inner space */
+  min-width: 0;
 }
 
 .evidenceColumn:nth-child(1) {
@@ -189,4 +190,13 @@
   cursor: pointer;
   font-size: 15px;
   padding: 5px;
+}
+
+@media (max-width: 700px) {
+
+.evidenceGrid {
+
+  width: 100%;
+}
+
 }
