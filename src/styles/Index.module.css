@@ -27,7 +27,8 @@
 
 
 /* Mobile */
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
+  
   .content, .card, .center {
     padding: 1rem;
   }

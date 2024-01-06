@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'; 
 import styles from './PercentageSlider.module.css';
+import { Modal } from 'antd';
 
 
 const PercentageSlider = ({ claimId }) => {
@@ -9,7 +10,7 @@ const PercentageSlider = ({ claimId }) => {
     const [average, setAverage] = useState(50);
     const sliderWrapperRef = useRef(null);  
     const [triangleWidthPercentage, setTriangleWidthPercentage] = useState(0);  // Define triangleWidthPercentage
-
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
 
     useEffect(() => {
@@ -80,19 +81,29 @@ const PercentageSlider = ({ claimId }) => {
         };
     }, [claimId]);
 
+    const handleSliderMouseDown = (event) => {
+        if (!user) {
+            event.preventDefault(); // Prevent the slider from moving
+            setIsModalVisible(true); // Show the Modal
+        }
+    };
+
+    const handleOk = () => {
+        setIsModalVisible(false);
+        window.location.href = '/api/auth/login'; // Adjust the URL to your login page
+      };
 
     const handleSliderChange = (event) => {
+        if (!user) {
+            alert('Please log in to adjust the slider.');
+            event.target.value = sliderValue; // Reset the slider value
+            return;
+        }
+    
         const value = event.target.value;
         setSliderValue(value);
     };
 
-    const handleSliderChangeEnd = async () => {
-        await fetch('/api/save-slider-value', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ claimId, value: sliderValue })
-        });
-    };
 
     useEffect(() => {
         fetch(`/api/get-average-slider-value?claimId=${claimId}`)
@@ -103,10 +114,18 @@ const PercentageSlider = ({ claimId }) => {
 
     return (
         <div className={styles.sliderContainer}>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : (
+    
                 <>
+                <Modal
+    title="Login Required"
+    visible={isModalVisible}
+    onOk={handleOk}
+    onCancel={() => setIsModalVisible(false)}
+    okText="Login"
+    cancelText="Cancel"
+>
+    <p>Please log in to adjust the slider.</p>
+</Modal>
                     <div className={styles.sliderLabel}>
                         <div className={styles.sliderLabelSideA}>0% Likelihood of being True</div>
                         <span className={styles.slidervalue}>{sliderValue}%</span>
@@ -118,8 +137,8 @@ const PercentageSlider = ({ claimId }) => {
                             min="0"
                             max="100"
                             value={sliderValue}
+                            onMouseDown={handleSliderMouseDown}
                             onChange={handleSliderChange}
-                            onMouseUp={handleSliderChangeEnd}
                             className={styles.slider}
                         />
                     </div>
@@ -136,7 +155,7 @@ const PercentageSlider = ({ claimId }) => {
 <div className={styles.averageLabel}><p>Average Response: {average}%</p></div>    </div>
 )}
                 </>
-            )}
+            
         </div>
     );
 };

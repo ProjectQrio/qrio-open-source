@@ -2,6 +2,7 @@ import classes from "./evidence-grid.module.css";
 import { useState, useRef } from 'react';
 import CommentsComponent from "./CommentsComponent";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { Modal } from 'antd';
 
 export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
   const { user, error, isLoading } = useUser();
@@ -9,15 +10,25 @@ export default function EvidenceGrid({ evidence, refetchEvidence, claimId }) {
   const [comments, setComments] = useState([]); // Add comments state
   const [commentValue, setCommentValue] = useState('');
   const commentTextareaRef = useRef(null); 
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const resizeTextarea = (e) => {
     e.target.style.height = 'auto'; // Reset the height
     e.target.style.height = e.target.scrollHeight + 'px'; // Set it to the scrollHeight
 };
 
+const promptLogin = () => {
+  setIsModalVisible(true);
+};
+
+const handleOk = () => {
+  setIsModalVisible(false);
+  window.location.href = '/api/auth/login'; // Adjust the URL to your login page
+};
+
 const toggleCommentForm = (evidenceId) => {
   if (!user) {
-    alert('Please log in to submit a comment.');
+    promptLogin();
     return;
   }
 
@@ -162,6 +173,16 @@ const handleCommentSubmit = async (event, evidenceId, userId, claimId) => {
             <h2 className={classes.header}>Support</h2>
             {renderEvidenceColumn(evidence.filter((e) => e.position === "for"))}
         </div>
+        <Modal
+  title="Login Required"
+  visible={isModalVisible}
+  onOk={handleOk}  
+  onCancel={() => setIsModalVisible(false)}
+  okText="Login"
+  cancelText="Cancel"
+>
+  <p>Please log in to leave a comment.</p>
+</Modal>
     </div>
 );
    
