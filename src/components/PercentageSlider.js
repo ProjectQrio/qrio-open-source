@@ -93,11 +93,11 @@ const PercentageSlider = ({ claimId }) => {
         window.location.href = '/api/auth/login'; // Adjust the URL to your login page
       };
 
-    const handleSliderChange = (event) => {
+      const handleSliderChange = (event) => {
         if (!user) {
-            alert('Please log in to adjust the slider.');
-            event.target.value = sliderValue; // Reset the slider value
-            return;
+            event.preventDefault(); // Prevent the slider from moving
+            setIsModalVisible(true); // Show the Modal instead of alert
+            return; // Exit the function early
         }
     
         const value = event.target.value;

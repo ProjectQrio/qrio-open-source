@@ -80,6 +80,8 @@
   padding: 1em;
   margin: 1em 0;
   background-color: white;
+  box-sizing: border-box; /* Make sure padding and border are included in the width */
+  word-wrap: break-word; /* Break long words to prevent overflow */
 }
 
 .header {
@@ -196,6 +198,7 @@
 .evidenceGrid {
 
   width: 100%;
+  min-width: 1000px;
 }
 
 }
