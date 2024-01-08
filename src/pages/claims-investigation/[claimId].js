@@ -85,6 +85,7 @@ const toggleDescription = () => {
       <meta property="og:title" content={claim.title} />
       <meta property="og:description" content={claim.description} />
       <meta property="og:image" content={claim.image} />
+      <meta name="robots" content="noai, noimageai" />
     </Head>
     <div>
       <MainNavigation></MainNavigation>

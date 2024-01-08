@@ -49,6 +49,7 @@ return (
   <meta property="og:title" content="Project Qrio" />
   <meta property="og:description" content="Qrio is a web tool that facilitates collaborative research. The design incentivizes nuanced, critical thinking and aims to help users escape their information bubbles to consider new perspectives. Be Qrios. Question Everything." />
   <meta property="og:image" content="ProjectQrioHeaderImage.png" />
+  <meta name="robots" content="noai, noimageai" />
 </Head>
 
    <MainNavigation />
