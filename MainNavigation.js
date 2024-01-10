@@ -13,7 +13,7 @@ export default function MainNavigation() {
       <div className={classes.logo}>
         <Link href="/">
           <img
-            src="/qrioheaderlogo.png"
+            src="/QrioLogoCollaborativeSensemaking.png"
             alt="Your logo"
             className={classes.logo}
             width={200}
