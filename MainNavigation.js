@@ -16,8 +16,8 @@ export default function MainNavigation() {
             src="/QrioLogoCollaborativeSensemaking.png"
             alt="Your logo"
             className={classes.logo}
-            width={200}
-            height={55}
+            width={250}
+            height={69}
           />
         </Link>
       </div>

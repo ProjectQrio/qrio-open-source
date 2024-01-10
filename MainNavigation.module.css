@@ -98,8 +98,10 @@
   }
 }
 
+.header {
+  margin-left: 2%; /* Adjust this value to match the left margin of the ClaimsGrid */
+  margin-right: 2%; /* Adjust this value as needed */
+}
 .logo {
-  flex-grow: 1;
-  align-self: flex-start;
-  margin-left: 6px;
+  margin-left: 6px; /* Adjust this value as needed */
 }

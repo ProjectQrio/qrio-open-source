@@ -30,7 +30,7 @@
 @media (max-width: 1200px) {
   
   .content, .card, .center {
-    padding: 1rem;
+    padding: .5rem;
   }
   .p, .claimdescriptionp {
     margin-left: 1rem;

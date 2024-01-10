@@ -91,6 +91,8 @@
   
   .claimsGrid {
     grid-template-columns: 1fr;
+    margin-left: 2%; /* Adjust this value as needed */
+    margin-right: 2%; 
   }
 
   .claimTitle {
