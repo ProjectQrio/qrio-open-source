@@ -71,7 +71,8 @@
   outline: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
+  
   .linkscontainer {
       display: none;
   }
@@ -95,4 +96,10 @@
   .hamburger {
       display: block;
   }
+}
+
+.logo {
+  flex-grow: 1;
+  align-self: flex-start;
+  margin-left: 6px;
 }
