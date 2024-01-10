@@ -54,7 +54,7 @@ return (
 
    <MainNavigation />
 <center>
-        <h2 className={styles.h2}>Claims Under Investigation</h2>
+        <h2 className={styles.h2}>Join the Investigation</h2>
         <ClaimsGrid claims={claims} />
         <h2 className={styles.h2}>Demo</h2>
         <DemoEmbed></DemoEmbed><br></br><br></br>
