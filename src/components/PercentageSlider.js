@@ -93,16 +93,40 @@ const PercentageSlider = ({ claimId }) => {
         window.location.href = '/api/auth/login'; // Adjust the URL to your login page
       };
 
-      const handleSliderChange = (event) => {
-        if (!user) {
-            event.preventDefault(); // Prevent the slider from moving
-            setIsModalVisible(true); // Show the Modal instead of alert
-            return; // Exit the function early
+      const savePercentageToDatabase = async (value) => {
+        try {
+            const response = await fetch(`/api/save-slider-value`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: user.sub,
+                    claimId: claimId,
+                    value: value,
+                }),
+            });
+            const data = await response.json();
+            console.log('Slider value saved:', data);
+        } catch (error) {
+            console.error('Error saving slider value:', error);
         }
-    
-        const value = event.target.value;
-        setSliderValue(value);
     };
+
+const handleSliderChange = async (event) => {
+    if (!user) {
+        event.preventDefault(); // Prevent the slider from moving
+        setIsModalVisible(true); // Show the Modal instead of alert
+        setSliderValue(50); // Reset the slider value to 50%
+        return; // Exit the function early
+    }
+
+    const value = event.target.value;
+    setSliderValue(value);
+
+    // Wait for the new slider value to be saved to the database
+    await savePercentageToDatabase(value);
+};
 
 
     useEffect(() => {

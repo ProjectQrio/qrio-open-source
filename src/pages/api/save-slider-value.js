@@ -16,6 +16,5 @@ export default async function handler(req, res) {
         { $push: { [`claims.${claimId}`]: value } },
         { upsert: true }
     );
-
-    return res.status(200).json({ message: 'Value saved' });
+return res.status(200).json({ message: 'Value saved', value: value });
 }
