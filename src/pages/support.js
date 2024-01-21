@@ -14,7 +14,7 @@ export default function SupportPage() {
           <p className={styles.p}>
             <center>
               If you're having any issues with the site, please{" "}
-              <a href="mailto:projectqrio@gmail.com" style={styles.link}>
+              <a href="mailto:contact@projectqrio.com" style={styles.link}>
                 email me
               </a>{" "}
               and I'll get back to you as soon as possible.

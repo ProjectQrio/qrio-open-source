@@ -4,7 +4,7 @@ function Footer() {
         <p style={styles.text}>
           © Stacia Wilson / Project Qrio 2023. 
           If you have any questions, feedback, ideas, or problems with the site, 
-          please <a href="mailto:projectqrio@gmail.com" style={styles.link}>email me</a>.
+          please <a href="mailto:contact@projectqrio.com" style={styles.link}>email me</a>.
         </p>
         <p style={styles.text}><a href="https://www.flaticon.com/free-icons/evidence" title="evidence icons" style={styles.link}>Evidence icons created by Freepik - Flaticon</a>&nbsp;|&nbsp;
         <a href="https://www.flaticon.com/free-icons/forum" title="forum icons" style={styles.link}>Forum icons created by apien - Flaticon</a></p>
