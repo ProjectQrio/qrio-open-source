@@ -34,7 +34,7 @@ Project Qrio is meant to provide simple, decentralized systems for people to wor
 
           <h3 className={styles.h3}>Next Step: User Acquisition</h3>
           <p className={styles.p}>
-          There's a lot of functionality I want to add, but the next step is to try to find the people who will add content. I want to see how people are using the app as it is so far, and decide what to build next based on the real experience and feedback of those users. If you have any questions, feedback, ideas, or problems with the site, please don't hesitate to <a href="mailto:contact@projectqrio.com" style={styles.link}>email me</a>. If you aren't interested in adding content yourself, you can still subscribe to get notified about new evidence and claims.
+          There's a lot of functionality I want to add, but the next step is to find the people who will be excited about Qrio and add content. I want to see how people are using the app as it is so far, and decide what to build next based on the real experience and feedback of those users. If you have any questions, feedback, ideas, or problems with the site, please don't hesitate to <a href="mailto:contact@projectqrio.com" style={styles.link}>email me</a>. If you aren't interested in adding content yourself, you can still subscribe to get notified about new evidence and claims.
           </p>
 
           <h3 className={styles.h3}>How to Use This Website</h3>
