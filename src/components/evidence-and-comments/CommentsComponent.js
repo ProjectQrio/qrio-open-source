@@ -6,8 +6,8 @@ export default function CommentsComponent({ comments, onDeleteComment, user }) {
       {comments && comments.map((comment, index) => (
         <div key={index} className={classes.comment}>
           <div className={classes.commentHeader}>
-          <span className={classes.commentAuthor}>{comment.name}</span>
-            {user && comment.userId === user.sub && (
+          <span className={classes.commentAuthor}>{comment.authorName}</span>
+                      {user && comment.userId === user.sub && (
               <span 
                 className={classes.deleteIcon} 
                 onClick={() => {
