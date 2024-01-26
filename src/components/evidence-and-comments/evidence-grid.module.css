@@ -198,7 +198,56 @@
 .evidenceGrid {
 
   width: 100%;
-  min-width: 1000px;
 }
 
+.evidenceColumn {
+  flex: 1;
+  margin: 0; /* Remove margin here */
+  padding: .4em; /* You can adjust padding to give inner space */
+  min-width: 0;
+}
+
+.evidenceCard {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: .6em;
+  margin: 1em 0;
+  background-color: white;
+  box-sizing: border-box; /* Make sure padding and border are included in the width */
+  word-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+.evidenceText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+  line-height: 1.5;
+}
+
+.header {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 31px;
+}
+
+.commentFormContainer {
+  display: block;
+  align-items: center;
+  padding-top: 10px;
+  margin-right: 6px;
+  margin-left: -3px;
+}
+
+.commentFormInput {
+  width: 100%;
+  height: 100px;
+  padding: 4px; /* 10 points padding around the text */
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 14px; /* Normal font size for the input */
+  resize: none;  /* Disables the default resize handle in the bottom-right corner */
+  overflow-y: hidden;  /* Hides vertical scrollbar */
+  font-family: 'Roboto', sans-serif;
+}
 }
