@@ -8,6 +8,8 @@ import { useEffect, useRef } from 'react';
 import { connectToDatabase } from './api/database';
 import EvidenceTicker from "@/components/home-page/EvidenceTicker.js";
 import CommentsTicker from "@/components/home-page/CommentsTicker.js";
+import AddBounty from "@/components/AddBounty.js";
+import { Tooltip } from "antd";
 
 export default function Home({ claims }) {
   const hasCalledAPI = useRef(false);
@@ -54,6 +56,12 @@ return (
 
    <MainNavigation />
 <center>
+
+<Tooltip title="Add to the bounty to get the claim investigated.">
+  <h2 className={styles.h2}>Add to the Bounty</h2>
+  <AddBounty />
+  </Tooltip>
+
         <h2 className={styles.h2}>Join the Investigation</h2>
         <ClaimsGrid claims={claims} />
         <h2 className={styles.h2}>Demo</h2>
