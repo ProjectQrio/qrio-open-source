@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 import { connectToDatabase } from './api/database';
 import EvidenceTicker from "@/components/home-page/EvidenceTicker.js";
 import CommentsTicker from "@/components/home-page/CommentsTicker.js";
-import AddBounty from "@/components/AddBounty.js";
+import AddBounty from "@/components/home-page/AddBounty.js";
 import { Tooltip } from "antd";
 
 export default function Home({ claims }) {
